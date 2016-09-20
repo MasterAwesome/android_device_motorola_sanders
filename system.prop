@@ -159,6 +159,12 @@ mm.enable.sec.smoothstreaming=false
 mm.enable.smoothstreaming=false
 mmp.enable.3g2=true
 
+# USB debugging at boot
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1
+
 # NITZ
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
