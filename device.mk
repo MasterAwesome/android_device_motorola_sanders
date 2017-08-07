@@ -188,11 +188,6 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl-qti \
     libloc_api-rpc-qc
 
-# HIDL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml \
-    $(LOCAL_PATH)/compatibility_matrix.xml:system/vendor/compatibility_matrix.xml
-	#
 # Healthd
 PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl
