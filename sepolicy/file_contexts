@@ -144,3 +144,7 @@
 /sys/kernel/debug/rmt_storage(/.*)? u:object_r:debugfs_rmt_storage:s0
 
 /data/vendor/nfc(/.*)? u:object_r:nfc_data_file:s0
+
+# Usb hal
+/(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.0-service\.potter       u:object_r:hal_usb_default_exec:s0
+
