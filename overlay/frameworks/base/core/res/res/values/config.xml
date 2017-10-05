@@ -331,6 +331,9 @@
     <!-- Should proximity check also affect fingerprint reader-->
     <bool name="config_proximityCheckOnFingerprintWake">true</bool>
 
+    <!-- Whether notify fingerprint client of successful cancelled authentication -->
+    <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
+
     <!-- Paths to the libraries that contain device specific key handlers -->
     <string name="config_deviceKeyHandlerLib" translatable="false">/system/priv-app/LineageActions/LineageActions.apk</string>
 
