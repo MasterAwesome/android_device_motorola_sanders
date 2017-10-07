@@ -13,5 +13,10 @@
     "repository": "GZR-Kernels/kernel_motorola_msm8953",
     "target_path": "kernel/motorola/msm8953",
     "branch": "8.0"
+  },
+  {
+    "repository": "LineageOS/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "branch": "lineage-15.0"
   }
 ]
