@@ -41,3 +41,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=motorola/sanders/sanders:7.1.1/NPS26.116-26/30:user/release-keys \
     PRIVATE_BUILD_DESC="sanders-7.1.1/NPS26.116-26/30:user/release-keys" \
     PRODUCT_NAME="Moto G5S Plus"
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+	DEVICE_MAINTAINERS="Prema Chand Alugu(premaca)"
