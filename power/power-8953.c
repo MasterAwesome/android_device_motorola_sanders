@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -51,8 +51,12 @@
 static int saved_interactive_mode = -1;
 static int display_hint_sent;
 static int video_encode_hint_sent;
+static int cam_preview_hint_sent;
 
+pthread_mutex_t camera_hint_mutex = PTHREAD_MUTEX_INITIALIZER;
+static int camera_hint_ref_count;
 static void process_video_encode_hint(void *metadata);
+//static void process_cam_preview_hint(void *metadata);
 
 int  power_hint_override(struct power_module *module, power_hint_t hint,
         void *data)
@@ -94,10 +98,9 @@ int  set_interactive_override(struct power_module *module, int on)
         /* Display off. */
              if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
                 (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-               int resource_values[] = {INT_OP_CLUSTER0_TIMER_RATE, BIG_LITTLE_TR_MS_50,
-                                        INT_OP_CLUSTER1_TIMER_RATE, BIG_LITTLE_TR_MS_50,
-                                        INT_OP_NOTIFY_ON_MIGRATE, 0x00};
-
+            /* timer rate - 40mS*/
+            int resource_values[] = {0x41424000, 0x28,
+                                     };
                if (!display_hint_sent) {
                    perform_hint_action(DISPLAY_STATE_HINT_ID,
                    resource_values, sizeof(resource_values)/sizeof(resource_values[0]));
@@ -118,6 +121,7 @@ int  set_interactive_override(struct power_module *module, int on)
     return HINT_HANDLED;
 }
 
+
 /* Video Encode Hint */
 static void process_video_encode_hint(void *metadata)
 {
@@ -135,7 +139,7 @@ static void process_video_encode_hint(void *metadata)
                             if (get_scaling_governor_check_cores(governor,
                                 sizeof(governor),CPU3) == -1) {
                                     ALOGE("Can't obtain scaling governor.");
-                                    return;
+                                    // return HINT_HANDLED;
                             }
                     }
             }
@@ -160,36 +164,39 @@ static void process_video_encode_hint(void *metadata)
         if ((strncmp(governor, INTERACTIVE_GOVERNOR,
             strlen(INTERACTIVE_GOVERNOR)) == 0) &&
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            /* Sched_load and migration_notif*/
-            int resource_values[] = {INT_OP_CLUSTER0_USE_SCHED_LOAD,
-                                     0x1,
-                                     INT_OP_CLUSTER1_USE_SCHED_LOAD,
-                                     0x1,
-                                     INT_OP_CLUSTER0_USE_MIGRATION_NOTIF,
-                                     0x1,
-                                     INT_OP_CLUSTER1_USE_MIGRATION_NOTIF,
-                                     0x1,
-                                     INT_OP_CLUSTER0_TIMER_RATE,
-                                     BIG_LITTLE_TR_MS_40,
-                                     INT_OP_CLUSTER1_TIMER_RATE,
-                                     BIG_LITTLE_TR_MS_40
+            /* Sched_load and migration_notification disable
+             * timer rate - 40mS*/
+            int resource_values[] = {0x41430000, 0x1,
+                                     0x41434000, 0x1,
+                                     0x41424000, 0x28,
                                      };
-            if (!video_encode_hint_sent) {
-                perform_hint_action(video_encode_metadata.hint_id,
-                resource_values,
-                sizeof(resource_values)/sizeof(resource_values[0]));
-                video_encode_hint_sent = 1;
-            }
+            pthread_mutex_lock(&camera_hint_mutex);
+            camera_hint_ref_count++;
+            if (camera_hint_ref_count == 1) {
+                if (!video_encode_hint_sent) {
+                    perform_hint_action(video_encode_metadata.hint_id,
+                    resource_values,
+                    sizeof(resource_values)/sizeof(resource_values[0]));
+                    video_encode_hint_sent = 1;
+                }
+           }
+           pthread_mutex_unlock(&camera_hint_mutex);
         }
     } else if (video_encode_metadata.state == 0) {
         if ((strncmp(governor, INTERACTIVE_GOVERNOR,
             strlen(INTERACTIVE_GOVERNOR)) == 0) &&
             (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            undo_hint_action(video_encode_metadata.hint_id);
-            video_encode_hint_sent = 0;
+            pthread_mutex_lock(&camera_hint_mutex);
+            camera_hint_ref_count--;
+            if (!camera_hint_ref_count) {
+                undo_hint_action(video_encode_metadata.hint_id);
+                video_encode_hint_sent = 0;
+            }
+            pthread_mutex_unlock(&camera_hint_mutex);
             return ;
         }
     }
     return;
 }
+
 

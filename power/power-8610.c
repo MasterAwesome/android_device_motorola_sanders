@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2013, The Linux Foundation. All rights reserved.
- * Copyright (c) 2014, The CyanogenMod Project
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -48,70 +47,19 @@
 #include "performance.h"
 #include "power-common.h"
 
-int get_number_of_profiles() {
-    return 3;
-}
+static int display_hint_sent;
 
-static int current_power_profile = PROFILE_BALANCED;
-
-static void set_power_profile(int profile) {
-
-    if (profile == current_power_profile)
-        return;
-
-    ALOGV("%s: profile=%d", __func__, profile);
-
-    if (current_power_profile != PROFILE_BALANCED) {
-        undo_hint_action(DEFAULT_PROFILE_HINT_ID);
-        ALOGV("%s: hint undone", __func__);
-    }
-
-    if (profile == PROFILE_HIGH_PERFORMANCE) {
-        int resource_values[] = { CPUS_ONLINE_MIN_2,
-            CPU0_MIN_FREQ_TURBO_MAX, CPU1_MIN_FREQ_TURBO_MAX };
-        perform_hint_action(DEFAULT_PROFILE_HINT_ID,
-            resource_values, ARRAY_SIZE(resource_values));
-        ALOGD("%s: set performance mode", __func__);
-    } else if (profile == PROFILE_POWER_SAVE) {
-        int resource_values[] = { CPUS_ONLINE_MAX_LIMIT_2,
-            CPU0_MAX_FREQ_NONTURBO_MAX, CPU1_MAX_FREQ_NONTURBO_MAX };
-        perform_hint_action(DEFAULT_PROFILE_HINT_ID,
-            resource_values, ARRAY_SIZE(resource_values));
-        ALOGD("%s: set powersave", __func__);
-    }
-
-    current_power_profile = profile;
-}
-
-extern void interaction(int duration, int num_args, int opt_list[]);
-
-int power_hint_override(__attribute__((unused)) struct power_module *module,
-        power_hint_t hint, void *data)
+int power_hint_override(struct power_module *module, power_hint_t hint, void *data)
 {
-    if (hint == POWER_HINT_SET_PROFILE) {
-        set_power_profile(*(int32_t *)data);
-        return HINT_HANDLED;
+    switch(hint) {
+        case POWER_HINT_INTERACTION:
+        {
+            int resources[] = {0x702, 0x20B, 0x30B};
+            int duration = 3000;
+
+            interaction(duration, sizeof(resources)/sizeof(resources[0]), resources);
+            return HINT_HANDLED;
+        }
     }
-
-    // Skip other hints in custom power modes
-    if (current_power_profile != PROFILE_BALANCED) {
-        return HINT_HANDLED;
-    }
-
-    if (hint == POWER_HINT_CPU_BOOST) {
-        int duration = *(int32_t *)data / 1000;
-        int resources[] = { CPUS_ONLINE_MIN_2, 0x20F, 0x30F};
-
-        if (duration > 0)
-            interaction(duration, ARRAY_SIZE(resources), resources);
-        return HINT_HANDLED;
-    } else if (hint == POWER_HINT_INTERACTION) {
-        int resources[] = {0x702, 0x20B, 0x30B};
-        int duration = 3000;
-
-        interaction(duration, ARRAY_SIZE(resources), resources);
-        return HINT_HANDLED;
-    }
-
     return HINT_NONE;
 }

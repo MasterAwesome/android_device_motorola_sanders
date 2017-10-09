@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,7 +26,8 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#define LOG_NIDEBUG 0
+
+
 
 #include <errno.h>
 #include <string.h>
@@ -47,61 +48,49 @@
 #include "performance.h"
 #include "power-common.h"
 
+static int display_fd;
+#define SYS_DISPLAY_PWR "/sys/kernel/hbtp/display_pwr"
 
-static void process_video_encode_hint(void *metadata)
+int set_interactive_override(struct power_module *module, int on)
 {
-    char governor[80];
-    struct video_encode_metadata_t video_encode_metadata;
-    char tmp_str[NODE_MAX];
+    static const char *display_on = "1";
+    static const char *display_off = "0";
+    char err_buf[80];
+    static int init_interactive_hint = 0;
+    static int set_i_count = 0;
+    int rc = 0;
 
-    if (get_scaling_governor(governor, sizeof(governor)) == -1) {
-        ALOGE("Can't obtain scaling governor.");
+    set_i_count ++;
+    ALOGI("Got set_interactive hint on= %d, count= %d\n", on, set_i_count);
 
-        return;
+    if (init_interactive_hint == 0)
+    {
+        //First time the display is turned off
+        display_fd = TEMP_FAILURE_RETRY(open(SYS_DISPLAY_PWR, O_RDWR));
+        if (display_fd < 0) {
+            strerror_r(errno,err_buf,sizeof(err_buf));
+            ALOGE("Error opening %s: %s\n", SYS_DISPLAY_PWR, err_buf);
+        }
+        else
+            init_interactive_hint = 1;
     }
+    else
+        if (!on ) {
+            /* Display off. */
+            rc = TEMP_FAILURE_RETRY(write(display_fd, display_off, strlen(display_off)));
+            if (rc < 0) {
+                strerror_r(errno,err_buf,sizeof(err_buf));
+                ALOGE("Error writing %s to  %s: %s\n", display_off, SYS_DISPLAY_PWR, err_buf);
+            }
+        }
+        else {
+            /* Display on */
+            rc = TEMP_FAILURE_RETRY(write(display_fd, display_on, strlen(display_on)));
+            if (rc < 0) {
+                strerror_r(errno,err_buf,sizeof(err_buf));
+                ALOGE("Error writing %s to  %s: %s\n", display_on, SYS_DISPLAY_PWR, err_buf);
+            }
+        }
 
-    /* Initialize encode metadata struct fields. */
-    memset(&video_encode_metadata, 0, sizeof(struct video_encode_metadata_t));
-    video_encode_metadata.state = -1;
-    video_encode_metadata.hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
-
-    if (metadata) {
-        if (parse_video_encode_metadata((char *)metadata, &video_encode_metadata) ==
-            -1) {
-            ALOGE("Error occurred while parsing metadata.");
-            return;
-        }
-    } else {
-        return;
-    }
-
-    if (video_encode_metadata.state == 1) {
-        if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-                (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-            int resource_values[] = {HS_FREQ_800, THREAD_MIGRATION_SYNC_OFF};
-            perform_hint_action(video_encode_metadata.hint_id,
-                    resource_values, ARRAY_SIZE(resource_values));
-        }
-    } else if (video_encode_metadata.state == 0) {
-         if ((strncmp(governor, INTERACTIVE_GOVERNOR, strlen(INTERACTIVE_GOVERNOR)) == 0) &&
-                (strlen(governor) == strlen(INTERACTIVE_GOVERNOR))) {
-           undo_hint_action(video_encode_metadata.hint_id);
-        }
-    }
-}
-
-int power_hint_override(struct power_module *module, power_hint_t hint, void *data)
-{
-    switch(hint) {
-        case POWER_HINT_VIDEO_ENCODE:
-        {
-          process_video_encode_hint(data);
-          return HINT_HANDLED;
-        }
-        default:
-        {
-            break;
-        }
-    }
-    return HINT_NONE;
+    return HINT_HANDLED; /* Don't excecute this code path, not in use */
 }
