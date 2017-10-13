@@ -324,4 +324,7 @@
     <integer name="config_proximityCheckTimeout">100</integer>
     <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
 
+    <!-- Should proximity check also affect fingerprint reader-->
+    <bool name="config_proximityCheckOnFingerprintWake">true</bool>
+
 </resources>
