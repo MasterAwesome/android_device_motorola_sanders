@@ -96,6 +96,9 @@ ENABLE_CPUSETS := true
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
 
+# Enable dexpreopt to speed boot time
+WITH_DEXPREOPT := true
+
 # Display
 HAVE_ADRENO_SOURCE:= false
 BOARD_USES_ADRENO := true
