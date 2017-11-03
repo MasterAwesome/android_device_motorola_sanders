@@ -59,7 +59,7 @@ TARGET_KERNEL_SOURCE := kernel/motorola/msm8953
 #
 # Toolchain
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androidkernel-
 
 # Audio
 AUDIO_FEATURE_ENABLED_SND_MONITOR := true
