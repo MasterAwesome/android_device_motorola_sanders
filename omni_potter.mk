@@ -28,7 +28,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/motorola/potter/full_potter.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, device/motorola/potter/core_32_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # for specific
