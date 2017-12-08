@@ -50,12 +50,12 @@ void num_sims() {
     std::string dualsim;
 
     dualsim = android::base::GetProperty("ro.boot.dualsim", "");
-    property_set("ro.hw.dualsim", dualsim.c_str());
+    android::base::SetProperty("ro.hw.dualsim", dualsim.c_str());
 
     if (dualsim == "true") {
-        property_set("persist.radio.multisim.config", "dsds");
+        android::base::SetProperty("persist.radio.multisim.config", "dsds");
     } else {
-        property_set("persist.radio.multisim.config", "");
+        android::base::SetProperty("persist.radio.multisim.config", "");
     }
 }
 
@@ -67,14 +67,14 @@ void vendor_load_properties()
         return;
 
     std::string sku = android::base::GetProperty("ro.boot.hardware.sku", "");
-    property_set("ro.product.model", sku.c_str());
+    android::base::SetProperty("ro.product.model", sku.c_str());
 
     // rmt_storage
     std::string device = android::base::GetProperty("ro.boot.device", "");
     std::string radio = android::base::GetProperty("ro.boot.radio", "");
-    property_set("ro.hw.device", device.c_str());
-    property_set("ro.hw.radio", radio.c_str());
-    property_set("ro.hw.fps", "true");
+    android::base::SetProperty("ro.hw.device", device.c_str());
+    android::base::SetProperty("ro.hw.radio", radio.c_str());
+    android::base::SetProperty("ro.hw.fps", "true");
 
     num_sims();
 }
