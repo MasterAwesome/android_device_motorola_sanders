@@ -61,8 +61,8 @@ USE_DEVICE_SPECIFIC_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 
 # Init
-#TARGET_INIT_VENDOR_LIB := libinit_sanders
-#TARGET_RECOVERY_DEVICE_MODULES := libinit_sanders
+TARGET_INIT_VENDOR_LIB := libinit_sanders
+TARGET_RECOVERY_DEVICE_MODULES := libinit_sanders
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237
