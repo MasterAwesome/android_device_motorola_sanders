@@ -27,7 +27,6 @@
 
 import init.omni.rc
 import init.mmi.rc
-import /vendor/etc/init/hw/init.mmi.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
