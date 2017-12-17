@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+
 # Get the prebuilt list of APNs
 $(call inherit-product, vendor/omni/config/gsm.mk)
 
@@ -27,7 +29,8 @@ TARGET_BOOTANIMATION_SIZE := 1080p
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/motorola/potter/full_potter.mk)
+$(call inherit-product, device/motorola/potter/device.mk)
+$(call inherit-product, vendor/motorola/potter/potter-vendor.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
