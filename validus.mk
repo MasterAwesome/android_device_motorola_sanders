@@ -39,4 +39,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="Moto G5S Plus"
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Prema Chand Alugu(premaca)"
+	DEVICE_MAINTAINERS="Prema Chand Alugu (premaca), Adam Ovadia (oadam11)"
