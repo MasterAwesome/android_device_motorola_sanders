@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 The CyanogenMod Project
+<!--
+     Copyright (C) 2017 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,15 +16,16 @@
 -->
 
 <resources>
+    <!-- Opens back camera using openLegacy() -->
+    <bool name="back_camera_open_legacy">false</bool>
 
-    <!-- Defines the location of the fingerprint sensor on the device
-         0 = back
-         1 = front
-         2 = left side
-         3 = right side
-    -->
-    <integer name="config_fingerprintSensorLocation">1</integer>
+    <!-- Opens front camera using openLegacy() -->
+    <bool name="front_camera_open_legacy">false</bool>
 
-  <!-- Whether to enable "show operator name in the status bar" setting -->
-  <bool name="config_showOperatorNameInStatusBar">true</bool>
+    <!-- Restart preview for back camera onPictureTaken -->
+    <bool name="back_camera_restart_preview_onPictureTaken">true</bool>
+
+    <!-- Restart preview for front camera onPictureTaken -->
+    <bool name="front_camera_restart_preview_onPictureTaken">true</bool>
+
 </resources>
