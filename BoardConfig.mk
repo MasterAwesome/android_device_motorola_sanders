@@ -219,8 +219,9 @@ LZMA_RAMDISK_TARGETS := recovery
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 # SELinux
-#include device/qcom/sepolicy/sepolicy.mk
-#BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+include vendor/omni/sepolicy/sepolicy.mk
 
 # Sensor
 USE_SENSOR_MULTI_HAL := true
