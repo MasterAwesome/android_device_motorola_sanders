@@ -32,7 +32,7 @@
 #include <string.h>
 
 #include "list.h"
-#include <utils/Log.h>
+#include <log/log.h>
 
 int init_list_head(struct list_node *head)
 {
@@ -114,7 +114,7 @@ void dump_list(struct list_node *head)
     if (head == NULL)
         return;
 
-    printf("List:\n");
+    ALOGV("List:\n");
 
     while ((current_node = current_node->next)) {
         if (current_node->dump) {
