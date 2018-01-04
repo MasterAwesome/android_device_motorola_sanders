@@ -1,0 +1,3 @@
+allow mediaextractor fuse:file r_file_perms;
+allow mediaextractor system_server:fifo_file { write append };
+allow mediaextractor sdcardfs:file r_file_perms;
