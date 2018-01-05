@@ -103,7 +103,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libbson \
     libshim_camera \
-    SnapdragonCamera2 \
+    Camera2 \
     camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
     libshim_camera_hal \
