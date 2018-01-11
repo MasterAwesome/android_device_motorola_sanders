@@ -2,7 +2,7 @@
   {
     "remote": "omnirom",
     "repository": "android_kernel_motorola_msm8953",
-    "target_path": "kernel/oneplus/msm8953",
+    "target_path": "kernel/motorola/msm8953",
     "revision": "android-8.1"
   },
   {
