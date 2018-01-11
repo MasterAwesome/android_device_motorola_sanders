@@ -19,7 +19,6 @@ package com.moto.actions;
 
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
-import android.app.ActivityOptions;
 import android.app.ISearchManager;
 import android.app.KeyguardManager;
 import android.content.ActivityNotFoundException;
@@ -209,15 +208,8 @@ public class KeyHandler implements DeviceKeyHandler {
         ActivityManager.RunningTaskInfo lastTask = getLastTask(context, am);
 
         if (lastTask != null) {
-            am.moveTaskToFront(lastTask.id, ActivityManager.MOVE_TASK_NO_USER_ACTION,
-                    getAnimation(context).toBundle());
+            am.moveTaskToFront(lastTask.id, ActivityManager.MOVE_TASK_NO_USER_ACTION);
         }
-    }
-
-    private static ActivityOptions getAnimation(Context context) {
-        return ActivityOptions.makeCustomAnimation(context,
-                com.android.internal.R.anim.custom_app_in,
-                com.android.internal.R.anim.custom_app_out);
     }
 
     private static ActivityManager.RunningTaskInfo getLastTask(Context context,
