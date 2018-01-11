@@ -12,5 +12,3 @@ allow toolbox firmware_file:file getattr;
 allow toolbox init:fifo_file ioctl;
 allow toolbox sysfs:dir rw_dir_perms;
 allow toolbox sysfs:file rw_file_perms;
-allow toolbox sysfs_mmi_touch:dir rw_dir_perms;
-allow toolbox sysfs_mmi_touch:file { rw_file_perms setattr };
