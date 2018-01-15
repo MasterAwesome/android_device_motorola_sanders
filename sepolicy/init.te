@@ -6,8 +6,6 @@ allow init hwservicemanager:binder call;
 allow init mm-qcamerad:binder transfer;
 allow init platform_app:binder transfer;
 
-dontaudit init sensorservice_service:service_manager add;
-
 allow init sysfs_devices_system_cpu:dir write;
 allow init sysfs_lowmemorykiller:dir write;
 allow init system_app:binder transfer;
@@ -48,14 +46,6 @@ allow init sysfs_screen_off_gestures:file { rw_file_perms setattr };
 # binder_call(hal_sensors_hwservice, servicemanager);
 # allow init hal_sensors_hwservice:service_manager find;
 
-
-dontaudit init btnvtool_exec:file execute_no_trans;
-dontaudit init vendor_file:file { execute_no_trans };
-dontaudit init firmware_file:dir { create setattr };
-dontaudit init batterystats_service:service_manager find;
-dontaudit init shell_exec:file execute_no_trans;
-dontaudit init system_file:file execute_no_trans;
-
 allow init self:capability sys_nice;
 
 allow init bt_firmware_file:filesystem { associate };
@@ -69,3 +59,5 @@ allow init self:netlink_route_socket { bind create getopt nlmsg_read read setopt
 allow init self:capability2 { block_suspend };
 
 allow init hal_sensors_hwservice:hwservice_manager find;
+
+allow init { domain -lmkd -crash_dump }:process noatsecure;

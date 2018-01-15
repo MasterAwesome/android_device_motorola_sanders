@@ -3,4 +3,3 @@ allow surfaceflinger perfd_data_file:sock_file write;
 allow surfaceflinger perfd_data_file:dir search;
 allow surfaceflinger perfd:unix_stream_socket connectto;
 
-dontaudit surfaceflinger hal_display_config_hwservice:hwservice_manager add;

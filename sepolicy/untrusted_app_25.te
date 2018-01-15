@@ -2,4 +2,5 @@
 #allow untrusted_app_25 proc:file read;
 #allow untrusted_app_25 qti_debugfs:file read;
 
-dontaudit untrusted_app_25 init:binder call;
+allow untrusted_app_25 init:unix_stream_socket { read write };
+

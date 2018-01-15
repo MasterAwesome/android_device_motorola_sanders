@@ -1,4 +1,5 @@
 binder_call(wcnss_service, servicemanager);
+set_prop(wcnss_service, wifi_prop);
 get_prop(wcnss_service, diag_prop);
 allow wcnss_service toolbox_exec:file { execute getattr execute_no_trans read open };
 allow wcnss_service shell_exec:file { execute getattr execute_no_trans read open };

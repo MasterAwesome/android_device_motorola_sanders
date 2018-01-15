@@ -19,5 +19,4 @@ allow mm-qcamerad persist_file:file { read getattr open };
 allow mm-qcamerad system_data_file:dir read;
 
 allow mm-qcamerad init:unix_stream_socket { read write };
-dontaudit mm-qcamerad init:binder call;
 allow mm-qcamerad sysfs_graphics:file { open read };

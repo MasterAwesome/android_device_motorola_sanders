@@ -15,4 +15,4 @@ allow system_server sysfs_screen_off_gestures:file rw_file_perms;
 allow system_server qti_debugfs:file { getattr open read };
 allow system_server init:unix_stream_socket write;
 
-dontaudit system_server init:binder call;
+get_prop(system_server, alarm_boot_prop)

@@ -35,4 +35,3 @@ allow servicemanager hal_gnss_qti:dir search;
 allow servicemanager hal_gnss_qti:file { open read };
 allow servicemanager hal_gnss_qti:process getattr;
 
-dontaudit servicemanager init:binder transfer;
