@@ -262,7 +262,7 @@ on boot
    write /sys/module/binder/parameters/debug_mask 0x5
 
 # Pass carrier to wlan
-service init_wifi /system/vendor/bin/wlan_carrier_bin.sh
+service init_wifi /system/vendor/bin/sh /system/vendor/bin/wlan_carrier_bin.sh
     class main
     user root
     group root
@@ -305,13 +305,13 @@ service fingerprintd /system/bin/fingerprintd
     user system
     group input
 
-service mmi-boot-sh /system/vendor/bin/init.mmi.boot.sh
+service mmi-boot-sh /system/vendor/bin/sh /system/vendor/bin/init.mmi.boot.sh
     class core
     user root
     oneshot
     disabled
 
-service mmi-laser-sh /system/vendor/bin/init.mmi.laser.sh
+service mmi-laser-sh /system/vendor/bin/sh /system/vendor/bin/init.mmi.laser.sh
     class core
     user root
     oneshot
