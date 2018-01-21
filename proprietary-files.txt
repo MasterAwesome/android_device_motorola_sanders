@@ -166,7 +166,6 @@ lib/libmotext_inf.so
 lib/libmotimager_utils.so
 lib/libqmimotext.so
 lib/libqomx_core.so
--lib/libril.so
 -priv-app/atfwd/atfwd.apk
 -priv-app/CNEService/CNEService.apk
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
