@@ -103,7 +103,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libbson \
     libshim_camera \
-    Camera2 \
+    Snap \
     camera.device@1.0-impl \
     camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
@@ -198,15 +198,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl \
     android.hardware.health@1.0-service
 
-# IMS
-PRODUCT_PACKAGES += \
-    libshim_ims
-
-# IPA Manager
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml
-
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/vendor/etc/sec_config
@@ -233,10 +224,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service \
     lights.msm8953
-
-# Display Calibration
-PRODUCT_PACKAGES += \
-    libjni_livedisplay
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -330,19 +317,22 @@ PRODUCT_COPY_FILES += \
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
-    libshim_ril \
     libprotobuf-cpp-full \
-    libxml2 \
-    rild_socket \
-    rild_32
+    libxml2
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rild/rild.rc:system/vendor/etc/init/rild.rc
+#RIL
+PRODUCT_PACKAGES += \
+    android.hardware.radio@1.0
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp_policy/mediaextractor.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy
+
+# IMS
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    telephony-ext
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -371,22 +361,14 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    hostapd_default.conf \
+    android.hardware.wifi@1.0-service \
     hostapd \
+    libwpa_client \
+    wcnss_service \
+    wificond \
+    wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf
-
-PRODUCT_PACKAGES += \
-    p2p_supplicant_overlay.conf \
-    wpa_supplicant_overlay.conf
-
-# Launcher3
-PRODUCT_PACKAGES += \
-    Launcher3
-
-# WiFi HAL
-PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service
 
 #Thermal
 PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \
@@ -412,11 +394,12 @@ PRODUCT_PACKAGES += \
     WCNSS_wlan_dictionary.dat
 
 PRODUCT_COPY_FILES += \
-    kernel/motorola/msm8953/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/vendor/etc/wifi/WCNSS_qcom_cfg.ini
+    kernel/motorola/msm8953/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 
-# TEMP FIX
+# HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0

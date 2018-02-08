@@ -1,22 +1,22 @@
 [
   {
-    "repository": "MasterAwesome/device_motorola_sanders",
+    "repository": "ValidusOs-Devices/device_motorola_sanders",
     "target_path": "device/motorola/sanders",
-    "branch": "lineage-15.1"
+    "branch": "8.1"
   },
   {
-    "repository": "MasterAwesome/vendor_motorola_sanders",
+    "repository": "BigTopKrazies/vendor_motorola_sanders",
     "target_path": "vendor/motorola/sanders",
-    "branch": "lineage-15.1"
+    "branch": "8.1"
   },
   {
-    "repository": "MasterAwesome/kernel_motorola_msm8953",
+    "repository": "GZR-Kernels/kernel_motorola_msm8953_sanders",
     "target_path": "kernel/motorola/msm8953",
-    "branch": "lineage-15.1"
+    "branch": "8.1-ods"
   },
   {
     "repository": "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
-    "branch": "staging/lineage-15.1"
+    "branch": "lineage-15.0"
   }
 ]

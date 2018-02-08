@@ -141,10 +141,6 @@ ENABLE_CPUSETS := true
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
 
-# Enable dexpreopt to speed boot time
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
-
 # Display
 BOARD_USES_ADRENO := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
@@ -176,6 +172,8 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Manifest
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
 DEVICE_MATRIX_FILE   := $(DEVICE_PATH)/configs/compatibility_matrix.xml
+
+PRODUCT_BOOT_JARS += telephony-ext
 
 NXP_CHIP_TYPE := PN551
 BOARD_NFC_HAL_SUFFIX := $(TARGET_BOARD_PLATFORM)

@@ -32,21 +32,6 @@ LOCAL_MODULE := libshim_camera
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
-# IMS
-include $(CLEAR_VARS)
-LOCAL_SRC_FILES := MediaBuffer.c
-LOCAL_SHARED_LIBRARIES := libstagefright_foundation
-LOCAL_MODULE := libshim_ims
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SHARED_LIBRARY)
-
-include $(CLEAR_VARS)
-LOCAL_SRC_FILES := rild_socket.c
-LOCAL_MODULE := rild_socket
-LOCAL_MODULE_TAGS := optional
-
-include $(BUILD_SHARED_LIBRARY)
-
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := camera_hal.cpp
 LOCAL_MODULE := libshim_camera_hal
@@ -63,12 +48,4 @@ LOCAL_SHARED_LIBRARIES := libstagefright libmedia
 LOCAL_MODULE := libshims_camera
 LOCAL_MODULE_TAGS := optional
 
-include $(BUILD_SHARED_LIBRARY)
-
-# RIL
-include $(CLEAR_VARS)
-LOCAL_SRC_FILES := sensor.cpp
-LOCAL_SHARED_LIBRARIES := libgui libsensor
-LOCAL_MODULE := libshim_ril
-LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
