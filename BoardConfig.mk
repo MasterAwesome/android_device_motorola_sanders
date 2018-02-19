@@ -25,6 +25,13 @@ BOARD_VENDOR := motorola-qcom
 # AIDs and CAPS
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
+#SHIMS
+TARGET_LD_SHIM_LIBS := /system/vendor/bin/adspd|libshim_adsp.so \
+    /system/lib/lib_motsensorlistener.so|libsensor.so \
+    /system/vendor/lib/libmot_gpu_mapper.so|libshim_camera.so \
+    /system/lib/libjustshoot.so|libshims_camera.so \
+    /system/vendor/lib/libguy.so|libshim_camera_hal.so
+
 # Platform
 TARGET_BOARD_PLATFORM := msm8953
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno506
