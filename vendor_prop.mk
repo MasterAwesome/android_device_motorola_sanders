@@ -210,7 +210,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ims.disableDebugLogs=1 \
     persist.vendor.ims.disableQXDMLogs=1 \
     DEVICE_PROVISIONED=1 \
-    persist.cne.feature=1
+    persist.cne.feature=1 \
+    persist.radio.add_power_save=1
 
 
 # NITZ
