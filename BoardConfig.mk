@@ -149,9 +149,6 @@ BOARD_USES_CYANOGEN_HARDWARE := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
 
-# CNE / DPM
-BOARD_USES_QCNE := true
-
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
 TARGET_CRYPTFS_HW_PATH := $(DEVICE_PATH)/cryptfs_hw
