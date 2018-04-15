@@ -1,13 +1,13 @@
 [
   {
-    "repository": "ValidusOs-Devices/device_motorola_sanders",
+    "repository": "MasterAwesome/android_device_motorola_sanders",
     "target_path": "device/motorola/sanders",
-    "branch": "8.1"
+    "branch": "lineage-15.1"
   },
   {
-    "repository": "BigTopKrazies/vendor_motorola_sanders",
+    "repository": "MasterAwesome/proprietary_vendor_motorola_sanders",
     "target_path": "vendor/motorola/sanders",
-    "branch": "8.1"
+    "branch": "lineage-15.1"
   },
   {
     "repository": "GZR-Kernels/kernel_motorola_msm8953_sanders",
