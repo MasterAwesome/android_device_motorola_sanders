@@ -61,13 +61,7 @@ on late-fs
     start servicemanager
     start surfaceflinger
     start bootanim
-
-    # Wait for hwservicemanager ready since fsck might be triggered in mount_all --late
-    # In such case, init won't responce the property_set from hwservicemanager and then
-    # cause services for bootanim not running.
-    wait_for_prop hwservicemanager.ready true
-
-    # Mount RW partitions which need run fsck
+    # mount RW partitions which need run fsck
     mount_all /vendor/etc/fstab.qcom --late
 
 on init
