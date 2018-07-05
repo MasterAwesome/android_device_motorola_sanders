@@ -49,6 +49,13 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+void property_override_dual(char const system_prop[], char const vendor_prop[],
+    char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
+
 void num_sims() {
     std::string dualsim;
 
@@ -69,13 +76,13 @@ void vendor_load_properties()
     if (platform != ANDROID_TARGET)
         return;
 
-    // fingerprint
-    property_override("ro.build.description", "sanders-user 7.1.1 NPSS26.116-61-2 7 release-keys");
-    property_override("ro.build.fingerprint", "motorola/sanders/sanders:7.1.1/NPSS26.116-61-2/7:user/release-keys");
-    property_override("ro.vendor.build.fingerprint", "motorola/sanders/sanders:7.1.1/NPSS26.116-61-2/7:user/release-keys");
+    // sku
+    std::string sku = android::base::GetProperty("ro.boot.hardware.sku", "");
+    property_override_dual("ro.product.model", "ro.vendor.product.model", sku.c_str());
 
-    std::string sku = GetProperty("ro.boot.hardware.sku", "");
-    property_set("ro.product.model", sku.c_str());
+    // fingerprint
+    property_override("ro.build.description", "sanders-7.1.1/NPS26.116-26/30:user/release-keys");
+    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys"); // safetynet hax
 
     // rmt_storage
     std::string device = GetProperty("ro.boot.device", "");
