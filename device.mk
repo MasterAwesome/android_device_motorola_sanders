@@ -17,9 +17,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -105,11 +103,14 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
     android.hardware.bluetooth@1.0-service
 
+# Browser
+PRODUCT_PACKAGES += \
+    Gello
+
 # Camera
 PRODUCT_PACKAGES += \
     libbson \
-    Snap \
-    camera.device@1.0-impl \
+    Camera2 \
     camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
     vendor.qti.hardware.camera.device@1.0 \
@@ -134,9 +135,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf \
     $(LOCAL_PATH)/gps/etc/cacert_location.pem:system/vendor/etc/cacert_location.pem
 
-# LineageActions
+# MotoActions
 PRODUCT_PACKAGES += \
-    LineageActions
+    MotoActions
 
 # Display
 PRODUCT_PACKAGES += \
@@ -168,12 +169,6 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-lite
-
-# limit dex2oat threads to improve thermals
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.boot-dex2oat-threads=8 \
-    dalvik.vm.dex2oat-threads=8 \
-    dalvik.vm.image-dex2oat-threads=8
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -240,13 +235,9 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     lights.msm8953
 
-# LiveDisplay native
+# Display Calibration
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm \
-    vendor.lineage.livedisplay-V1.0-java
-
-PRODUCT_BOOT_JARS += \
-    vendor.lineage.livedisplay-V1.0-java
+    libjni_livedisplay
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -254,9 +245,9 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service.widevine
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_djn_1080p_550.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_djn_1080p_550.xml \
-    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_tianma_1080p_550.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_tianma_1080p_550.xml
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_djn_1080p_550.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_djn_1080p_550.xml \
+#    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_tianma_1080p_550.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_tianma_1080p_550.xml
 
 # Media
 PRODUCT_PACKAGES += \
@@ -312,6 +303,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.1-service-qti \
     android.hardware.power@1.0-service-qti
 
 # Qualcomm
@@ -406,6 +398,10 @@ PRODUCT_PACKAGES += \
     wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# Launcher3
+PRODUCT_PACKAGES += \
+    Launcher3
 
 #Thermal
 PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \

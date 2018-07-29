@@ -38,24 +38,28 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>2</item>
-        <item>10</item>
+        <item>1</item>
+        <item>6</item>
+        <item>12</item>
+        <item>25</item>
         <item>50</item>
-        <item>90</item>
-        <item>100</item>
-        <item>150</item>
-        <item>200</item>
-        <item>300</item>
-        <item>400</item>
+        <item>80</item>
+        <item>120</item>
+        <item>175</item>
+        <item>250</item>
+        <item>350</item>
         <item>500</item>
-        <item>800</item>
+        <item>750</item>
         <item>1000</item>
-        <item>1300</item>
+        <item>1400</item>
         <item>2000</item>
-        <item>3000</item>
-        <item>4000</item>
-        <item>8000</item>
+        <item>3500</item>
+        <item>6000</item>
         <item>10000</item>
+        <item>15000</item>
+        <item>20000</item>
+        <item>30000</item>
+        <item>65535</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -64,29 +68,37 @@
          This must be overridden in platform specific overlays -->
     
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>3</item>
-        <item>11</item>
-        <item>40</item>
-        <item>62</item>
-        <item>74</item>
-        <item>85</item>
-        <item>102</item>
-        <item>102</item>
-        <item>102</item>
-        <item>102</item>
-        <item>128</item>
+        <item>7</item>
+        <item>10</item>
+        <item>13</item>
+        <item>16</item>
+        <item>22</item>
+        <item>28</item>
+        <item>34</item>
+        <item>43</item>
+        <item>52</item>
+        <item>61</item>
+        <item>72</item>
+        <item>83</item>
+        <item>94</item>
+        <item>105</item>
+        <item>117</item>
+        <item>129</item>
+        <item>141</item>
         <item>153</item>
-        <item>170</item>
+        <item>166</item>
         <item>179</item>
-        <item>238</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>256</item>
+        <item>192</item>
+        <item>205</item>
+        <item>218</item>
     </integer-array>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
+
+    <!-- Boolean indicating whether or not to revert to default country code when cellular
+         radio is unable to find any MCC information to infer wifi country code from -->
+    <bool translatable="false" name="config_wifi_revert_country_code_on_cellular_loss">true</bool>
 
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
@@ -285,15 +297,38 @@
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
 
-    <!-- Should proximity check also affect fingerprint reader
-    <bool name="config_proximityCheckOnFingerprintWake">true</bool>-->
-
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
 
-   <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
-   in hardware. -->
-   <bool name="config_setColorTransformAccelerated">true</bool>
+    <!-- Paths to the libraries that contain device specific key handlers -->
+    <string name="config_deviceKeyHandlerLib" translatable="false">/system/priv-app/MotoActions/MotoActions.apk</string>
+
+    <!-- Names of the key handler classes -->
+    <string name="config_deviceKeyHandlerClass" translatable="false">com.moto.actions.KeyHandler</string>
+
+    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveNotificationLed">true</bool>
+
+    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
+
+    <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently
+    in hardware. -->
+    <bool name="config_setColorTransformAccelerated">true</bool>
+    
+    <!-- Hardware keys present on the device, stored as a bit field.
+         This integer should equal the sum of the corresponding value for each
+         of the following keys present:
+             1 - Home
+             2 - Back
+             4 - Menu
+             8 - Assistant (search)
+            16 - App switch
+            32 - Camera
+            64 - Volume rocker
+         For example, a device with Home, Back and Menu keys would set this
+         config to 7. -->
+    <integer name="config_deviceHardwareKeys">64</integer>
 
    <!-- Default files to pin via Pinner Service -->
    <string-array translatable="false" name="config_defaultPinnerServiceFiles">

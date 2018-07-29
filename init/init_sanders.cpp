@@ -30,13 +30,14 @@
 #include <stdlib.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
-
+#include <android-base/logging.h>
 #include <android-base/properties.h>
 #include "property_service.h"
-#include "vendor_init.h"
 
-using android::base::GetProperty;
-using android::init::property_set;
+
+
+namespace android {
+namespace init {
 
 void property_override(char const prop[], char const value[])
 {
@@ -49,17 +50,10 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void property_override_dual(char const system_prop[], char const vendor_prop[],
-    char const value[])
-{
-    property_override(system_prop, value);
-    property_override(vendor_prop, value);
-}
-
 void num_sims() {
     std::string dualsim;
 
-    dualsim = GetProperty("ro.boot.dualsim", "");
+    dualsim = android::base::GetProperty("ro.boot.dualsim", "");
     property_set("ro.hw.dualsim", dualsim.c_str());
 
     if (dualsim == "true") {
@@ -71,22 +65,22 @@ void num_sims() {
 
 void vendor_load_properties()
 {
-    std::string platform = GetProperty("ro.board.platform", "");
+    std::string platform = android::base::GetProperty("ro.board.platform", "");
 
     if (platform != ANDROID_TARGET)
         return;
 
     // sku
     std::string sku = android::base::GetProperty("ro.boot.hardware.sku", "");
-    property_override_dual("ro.product.model", "ro.vendor.product.model", sku.c_str());
+    property_set("ro.product.model", sku.c_str());
 
     // fingerprint
     property_override("ro.build.description", "sanders-7.1.1/NPS26.116-26/30:user/release-keys");
-    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys"); // safetynet hax
+    property_set("ro.build.fingerprint","google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys"); // safetynet hax
 
     // rmt_storage
-    std::string device = GetProperty("ro.boot.device", "");
-    std::string radio = GetProperty("ro.boot.radio", "");
+    std::string device = android::base::GetProperty("ro.boot.device", "");
+    std::string radio = android::base::GetProperty("ro.boot.radio", "");
     property_set("ro.hw.device", device.c_str());
     property_set("ro.hw.radio", radio.c_str());
     property_set("ro.hw.fps", "true");
@@ -94,3 +88,6 @@ void vendor_load_properties()
 
     num_sims();
 }
+}  // namespace init
+} // namespace android
+

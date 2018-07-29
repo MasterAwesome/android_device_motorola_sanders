@@ -57,6 +57,8 @@ on fs
     restorecon_recursive   /dsp
 
 on init
+    # Symbols required for motorola blobs
+    export LD_SHIM_LIBS /system/vendor/bin/adspd|libshim_adsp.so:/system/vendor/lib64/libmdmcutback.so|libqsap_shim.so
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
     # Set permissions for persist partition
@@ -547,7 +549,7 @@ service esepmdaemon /system/vendor/bin/esepmdaemon
     user system
     group nfc
 
-service wcnss-service /system/bin/wcnss_service
+service wcnss-service /system/vendor/bin/wcnss_service
     class main
     user system
     group system wifi radio

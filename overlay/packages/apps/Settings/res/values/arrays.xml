@@ -3,7 +3,6 @@
 /*
 **
 ** Copyright 2015 The Android Open Source Project
-**           2017 The LineageOS Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -18,14 +17,13 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
+<resources>
     <!-- IDs for each color mode. The values must match the corresponding constants in
-         android.view.Display -->
+    android.view.Display -->
     <integer-array name="color_mode_ids">
         <item>0</item>
         <item>-1</item>
         <item>-1</item>
     </integer-array>
-
 </resources>
+

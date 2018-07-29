@@ -1,0 +1,62 @@
+[
+  {
+    "remote": "github",
+    "repository": "GZR-Kernels/kernel_motorola_msm8953_sanders",
+    "target_path": "kernel/motorola/msm8953",
+    "revision": "8.1-ods"
+  },
+  {
+    "remote": "github",
+    "repository": "MasterAwesome/android_device_motorola_sanders",
+    "target_path": "device/motorola/sanders",
+    "revision": "android-8.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_display-caf-msm8996",
+    "target_path": "hardware/qcom/display-caf-msm8996",
+    "revision": "android-8.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_audio-caf-msm8996",
+    "target_path": "hardware/qcom/audio-caf-msm8996",
+    "revision": "android-8.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_media-caf-msm8996",
+    "target_path": "hardware/qcom/media-caf-msm8996",
+    "revision": "android-8.1"
+  },
+  {
+    "remote": "github",
+    "repository": "BigTopKrazies/vendor_motorola_sanders",
+    "target_path": "vendor/motorola/sanders",
+    "revision": "8.1"
+  },
+  {
+    "remote": "github",
+    "repository": "LineageOS/android_system_qcom",
+    "target_path": "system/qcom",
+    "revision": "lineage-15.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "vendor_qcom_opensource_dataservices",
+    "target_path": "vendor/qcom/opensource/dataservices",
+    "revision": "android-8.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_device_qcom_caf-sepolicy",
+    "target_path": "device/qcom/sepolicy",
+    "revision": "android-8.1"
+  },
+  {
+    "remote": "omnirom",
+    "repository": "android_vendor_qcom_opensource_interfaces",
+    "target_path": "vendor/qcom/opensource/interfaces",
+    "revision": "android-8.1"
+  }
+]

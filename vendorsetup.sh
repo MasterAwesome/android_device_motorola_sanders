@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo lineage_sanders-userdebug
+add_lunch_combo omni_sanders-userdebug
