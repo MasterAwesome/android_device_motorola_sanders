@@ -72,9 +72,6 @@ vendor.vidc.disable.split.mode=1
 vendor.vidc.enc.disable.pq=true
 vendor.vidc.dec.downscalar_width=1920
 vendor.vidc.dec.downscalar_height=1088
-media.camera.ts.monotonic=1
-persist.camera.time.monotonic=1
-persist.camera.eis.enable=1
 vidc.dec.disable.split.cpu=1
 video.disable.ubwc=1
 vendor.camera.aux.packagelist=com.motorola.camera2,com.google.android.Pixel2Mod
@@ -149,9 +146,6 @@ persist.ims.vt=false
 persist.ims.vt.epdg=false
 persist.mm.sta.enable=0
 persist.vt.supported=0
-persist.dbg.volte_avail_ovr=1
-persist.dbg.vt_avail_ovr=1
-persist.dbg.wfc_avail_ovr=1
 
 # Media
 media.aac_51_output_enabled=true

@@ -43,7 +43,7 @@ on fs
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
     mount_all fstab.qcom
-    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/swappiness 60
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
