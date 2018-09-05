@@ -25,12 +25,11 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import /init.mmi.rc
+import /system/vendor/etc/init/hw/init.mmi.rc
 
 on early-init
-    mount tracefs tracefs /sys/kernel/tracing
-    chmod 0755 /sys/kernel/tracing
-    restorecon --recursive /sys/kernel/tracing
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
     mkdir /firmware 0771 system system
     mkdir /system 0777 root root
     symlink /data/tombstones /tombstones
@@ -42,7 +41,7 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    mount_all fstab.qcom
+    mount_all /system/vendor/etc/fstab.qcom
     write /proc/sys/vm/swappiness 100
 
     # Keeping following partitions outside fstab file. As user may not have
@@ -313,6 +312,12 @@ on post-fs-data
     # Create directory used by media clients
     mkdir /data/vendor/media 0770 mediacodec media
 
+    #Create directories for Fingerprint
+    mkdir /data/vendor/misc/qti_fp 0770 system system
+    mkdir /data/vendor/misc/qti_fp/bg_estimation 0770 system system
+    mkdir /data/vendor/misc/qti_fp/calib_test 0770 system system
+    mkdir /data/vendor/misc/qti_fp/database 0770 system system
+
     # Create directory used for camera
     mkdir /data/vendor/camera 0770 camera camera
 
@@ -354,8 +359,8 @@ on post-fs-data
     mkdir /data/misc/dhcp 0750 dhcp system
 
     #create port-bridge log dir
-    mkdir /data/misc/port_bridge 0770 radio radio
-    chmod 0770 /data/misc/port_bridge
+    mkdir /data/vendor/port_bridge 0770 radio radio
+    chmod 0770 /data/vendor/port_bridge
 
     #create netmgr log dir
     mkdir /data/misc/netmgr 0770 radio radio
@@ -364,6 +369,10 @@ on post-fs-data
     #create netmgr log dir
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
+
+    #create ipacm log dir
+    mkdir /data/vendor/ipa 0770 radio radio
+    chmod 0770 /data/vendor/ipa
 
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
@@ -475,6 +484,9 @@ on post-fs-data
     write /sys/bus/msm_subsys/devices/subsys2/restart_level related
     write /sys/bus/msm_subsys/devices/subsys3/restart_level related
     write /sys/bus/msm_subsys/devices/subsys4/restart_level related
+
+    # Create vpp directory
+    mkdir /data/vendor/vpp 0770 media media
 
     setprop vold.post_fs_data_done 1
 
@@ -759,6 +771,15 @@ service wlan_logging /system/bin/cnss_diag -q -f
     disabled
     oneshot
 
+service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
+    class late_start
+    user system
+    group system inet net_admin wifi
+    capabilities NET_ADMIN
+
+on property:sys.shutdown.requested=*
+    stop cnss-daemon
+
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     class late_start
     disabled
@@ -800,7 +821,7 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     user root
     group root
 
-service fm_dl /system/bin/sh /system/vendor/etc/init.qcom.fm.sh
+service fm_dl /vendor/bin/init.qti.fm.sh
     class late_start
     user system
     group system
@@ -897,12 +918,13 @@ on property:sys.boot_completed=1
     # governor settings
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
-    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1401600:40000"
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "19000 1401600:39000"
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 85
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1401600
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 0
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1401600:80"
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 39000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 652800
 
     # re-enable thermal & BCL core_control now
@@ -925,8 +947,8 @@ on property:sys.boot_completed=1
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
     # SMP scheduler
-    write /proc/sys/kernel/sched_downmigrate 85
     write /proc/sys/kernel/sched_upmigrate 85
+    write /proc/sys/kernel/sched_downmigrate 85
     write /proc/sys/kernel/sched_upmigrate_min_nice 19
 
     # Enable sched guided freq control
@@ -956,7 +978,6 @@ on property:sys.boot_completed=1
     write /sys/block/dm-1/queue/read_ahead_kb 128
     write /sys/block/mmcblk0rpmb/bdi/read_ahead_kb 128
     write /sys/block/mmcblk0rpmb/queue/read_ahead_kb 128
-    write /sys/block/mmcblk0/queue/iosched/back_seek_penalty 1
     
     #WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
