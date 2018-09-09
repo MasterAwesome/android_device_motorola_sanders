@@ -10,13 +10,13 @@
     "branch": "lineage-15.1"
   },
   {
-    "repository": "MasterAwesome/kernel_motorola_msm8953_sanders",
+    "repository": "GZR-Kernels/kernel_motorola_msm8953_sanders",
     "target_path": "kernel/motorola/msm8953",
-    "branch": "lineage-15.1"
+    "branch": "8.1-ods"
   },
   {
     "repository": "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
-    "branch": "lineage-15.1"
+    "branch": "lineage-15.0"
   }
 ]

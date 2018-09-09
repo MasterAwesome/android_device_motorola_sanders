@@ -134,10 +134,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf \
     $(LOCAL_PATH)/gps/etc/cacert_location.pem:system/vendor/etc/cacert_location.pem
 
-# LineageActions
-PRODUCT_PACKAGES += \
-    LineageActions
-
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8953 \
@@ -203,9 +199,7 @@ PRODUCT_PACKAGES += \
     libgnsspps \
     android.hardware.gnss@1.0-impl-qti \
     android.hardware.gnss@1.0-impl \
-    android.hardware.gnss@1.0-service-qti \
-    libqsap_sdk \
-    libqsap_shim
+    android.hardware.gnss@1.0-service-qti
 
 # health
 PRODUCT_PACKAGES += \
@@ -240,24 +234,15 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     lights.msm8953
 
-# LiveDisplay native
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm \
-    vendor.lineage.livedisplay-V1.0-java
-
-PRODUCT_BOOT_JARS += \
-    vendor.lineage.livedisplay-V1.0-java
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service.widevine
 
-# CAUSES COLOUR CORRUPTION
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_djn_1080p_550.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_djn_1080p_550.xml \
-#    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_tianma_1080p_550.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_tianma_1080p_550.xml
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_djn_1080p_550.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_djn_1080p_550.xml \
+    $(LOCAL_PATH)/configs/qdcm_calib_data_mipi_mot_vid_tianma_1080p_550.xml:system/vendor/etc/qdcm_calib_data_mipi_mot_vid_tianma_1080p_550.xml
 
 # Media
 PRODUCT_PACKAGES += \
@@ -322,6 +307,7 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    init.qcom.ril.sh \
     init.qcom.fm.sh \
     wlan_carrier_bin.sh
 
@@ -331,9 +317,7 @@ PRODUCT_PACKAGES += \
     init.mmi.rc \
     init.mmi.usb.rc \
     init.qcom.rc \
-
-PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/rootdir/etc/ueventd.qcom.rc:system/vendor/ueventd.rc
+    ueventd.qcom.rc
 
 # Powerhint configuration file
 PRODUCT_COPY_FILES += \
