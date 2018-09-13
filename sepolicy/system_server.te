@@ -19,4 +19,4 @@ allow system_server init:unix_stream_socket write;
 
 allow system_server sensors_device:chr_file { ioctl open read };
 
-get_prop(system_server, alarm_boot_prop)
+allow system_server vendor_file:file { getattr open read execute };
