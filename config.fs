@@ -13,10 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[AID_VENDOR_VENDOR_RFS]
+[AID_VENDOR_RFS]
 value:2951
 
-[AID_VENDOR_VENDOR_RFS_SHARED]
+[AID_VENDOR_RFS_SHARED]
 value:2952
 
 [system/vendor/bin/wcnss_filter]
