@@ -22,15 +22,8 @@ TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 BOARD_VENDOR := motorola-qcom
 
-WITH_LINEAGE_CHARGER := false
-
 # AIDs and CAPS
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
-
-# Shim
-TARGET_LD_SHIM_LIBS := \
-    /system/vendor/bin/adspd|libshim_adsp.so \
-    /system/vendor/lib64/libmdmcutback.so|libqsap_shim.so
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8953
@@ -54,13 +47,16 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_USES_64_BIT_BINDER := true
 
+DISABLE_DTC_OPTS := true
+
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := sanders,sanders_retail
 
 # GPS
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
+USING_DEVICE_GPS := true
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_sanders
@@ -80,18 +76,9 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CONFIG := sanders_defconfig
 TARGET_KERNEL_SOURCE := kernel/motorola/msm8953
-
-# Toolchain
-KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
+KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-androidkernel-
-
 TARGET_USE_SDCLANG := true
-
-#Power
-TARGET_HAS_NO_WIFI_STATS := true
-
-# Thermal
-USE_DEVICE_SPECIFIC_THERMAL := true
 
 # Audio
 AUDIO_FEATURE_ENABLED_ALAC_OFFLOAD := true
@@ -140,10 +127,14 @@ BOARD_NO_CHARGER_LED := true
 WITH_CM_CHARGER := false
 
 # DT2W
-#TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
+TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
+
+# Enable dexpreopt to speed boot time
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
 
 # Display
 BOARD_USES_ADRENO := true
@@ -163,9 +154,6 @@ MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
-
-# exfat
-TARGET_EXFAT_DRIVER := exfat
 
 # FM
 BOARD_HAVE_QCOM_FM := true
@@ -189,29 +177,23 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216        #    16384 * 1024 mmcblk0p37
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456      #   262144 * 1024 mmcblk0p52
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 21073920    #    20580 * 1024 mmcblk0p38
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432    #    32768 * 1024 mmcblk0p38
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296    #  4194304 * 1024 mmcblk0p53
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 25614597120 # 25014255 * 1024 mmcblk0p54
 
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
+# Power
+TARGET_HAS_NO_WIFI_STATS := true
+
 # QC flags
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
 
-#QTI
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
-
-# CAF
-TARGET_QCOM_DISPLAY_VARIANT := caf-msm8996
-TARGET_QCOM_AUDIO_VARIANT := caf-msm8996
-TARGET_QCOM_MEDIA_VARIANT := caf-msm8996
-TARGET_QCOM_BLUETOOTH_VARIANT := caf-msm8996
-
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.recovery
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 LZMA_RAMDISK_TARGETS := recovery
@@ -220,10 +202,19 @@ LZMA_RAMDISK_TARGETS := recovery
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 # SELinux
-SELINUX_IGNORE_NEVERALLOWS := true
 #include device/qcom/sepolicy/sepolicy.mk
 #BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
+# Shim
+TARGET_LD_SHIM_LIBS := \
+    /system/vendor/bin/adspd|libshim_adsp.so \
+    /system/vendor/lib64/libmdmcutback.so|libqsap_shim.so
+
+# Thermal
+USE_DEVICE_SPECIFIC_THERMAL := true
+
+# Use mke2fs to create ext4 images
+TARGET_USES_MKE2FS := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true

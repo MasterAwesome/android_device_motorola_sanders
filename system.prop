@@ -41,11 +41,11 @@ vendor.use.voice.path.for.pcm.voip=false
 
 # Bluetooth
 bluetooth.hfp.client=1
-qcom.bluetooth.soc=smd
 qcom.bt.le_dev_pwr_class=1
 ro.cutoff_voltage_mv=3400
 ro.bluetooth.hfp.ver=1.7
 ro.qualcomm.bt.hci_transport=smd
+vendor.qcom.bluetooth.soc=pronto
 ro.qualcomm.bluetooth.opp=true
 ro.qualcomm.bluetooth.hfp=true
 ro.qualcomm.bluetooth.hsp=true
@@ -72,6 +72,9 @@ vendor.vidc.disable.split.mode=1
 vendor.vidc.enc.disable.pq=true
 vendor.vidc.dec.downscalar_width=1920
 vendor.vidc.dec.downscalar_height=1088
+media.camera.ts.monotonic=1
+persist.camera.time.monotonic=1
+persist.camera.eis.enable=1
 vidc.dec.disable.split.cpu=1
 video.disable.ubwc=1
 vendor.camera.aux.packagelist=com.motorola.camera2,com.google.android.Pixel2Mod
@@ -89,27 +92,39 @@ ro.vendor.qti.core_ctl_max_cpu=4
 
 # Dalvik
 dalvik.vm.heapgrowthlimit=192m
-dalvik.vm.heapstartsize=16m
-dalvik.vm.heapsize=512m
-dalvik.vm.heaptargetutilization=0.75
-dalvik.vm.heapminfree=4m
 dalvik.vm.heapmaxfree=8m
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapsize=384m
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heaptargetutilization=0.75
 
 # Display
-debug.egl.hw=0
-debug.gralloc.enable_fb_ubwc=1
 debug.sf.enable_hwc_vds=1
+debug.egl.hw=0
 debug.sf.hw=0
 debug.sf.latch_unsignaled=1
+persist.hwc.mdpcomp.enable=true
 dev.pm.dyn_samplingrate=1
+persist.demo.hdmirotationlock=false
+ro.opengles.version=196610
+ro.sf.lcd_density=400
+persist.debug.wfd.enable=1
+debug.gralloc.enable_fb_ubwc=1
 persist.camera.preview.ubwc=0
 persist.camera.video.ubwc=0
-persist.debug.wfd.enable=1
-persist.demo.hdmirotationlock=false
-persist.hwc.mdpcomp.enable=true
-ro.opengles.version=196610
-ro.sf.lcd_density=420
+persist.hwc.enable_vds=1
+debug.sf.recomputecrop=0
+debug.enable.sglscale=1
+
+#Disable Skip Validate
 sdm.debug.disable_skip_validate=1
+
+# Display Properties as per treble compliance
+vendor.gralloc.enable_fb_ubwc=1
+vendor.display.disable_skip_validate=1
+
+# Property to enable display default color mode
+vendor.display.enable_default_color_mode=1
 
 # FM
 ro.fm.transmitter=false
@@ -128,7 +143,6 @@ ro.hwui.text_large_cache_width=2048
 ro.hwui.text_large_cache_height=1024
 
 # IMS
-persist.vendor.radio.jbims=1
 persist.radio.RATE_ADAPT_ENABLE=1
 persist.radio.VT_ENABLE=1
 persist.radio.VT_HYBRID_ENABLE=1
@@ -215,6 +229,21 @@ ro.telephony.call_ring.multiple=false
 persist.vendor.radio.eri64_as_home=1
 persist.vendor.radio.data_con_rprt=1
 
+persist.vendor.radio.force_on_dc=true
+persist.radio.custom_ecc=1
+persist.radio.data_con_rprt=1
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.radio.data_ltd_sys_ind=1
+persist.vendor.radio.ignore_dom_time=10
+persist.radio.ignore_dom_time=10
+persist.radio.rat_on=combine
+persist.radio.is_wps_enabled=true
+persist.radio.videopause.mode=1
+persist.radio.sap_silent_pin=1
+persist.radio.always_send_plmn=true
+persist.rcs.supported=1
+persist.dbg.ims_volte_enable=1
+
 ro.use_data_netmgrd=true
 persist.data.qmi.adb_logmask=0
 persist.data.netmgrd.qos.enable=true
@@ -232,12 +261,20 @@ persist.data.df.mux_count=8
 persist.data.df.iwlan_mux=9
 persist.data.df.dev_name=rmnet_usb0
 
-# Sensors
-ro.hardware.sensors=sanders
-ro.mot.sensors.glance_approach=false
+ro.sys.sdcardfs=false
 
-# SensorService
-system_init.startsensorservice=0
+# Sensors
+ro.vendor.sensors.pmd=false
+ro.vendor.sensors.sta_detect=true
+ro.vendor.sensors.mot_detect=true
+ro.vendor.sensors.amd=false
+ro.vendor.sensors.rmd=false
+ro.vendor.sdk.sensors.gestures=false
+ro.vendor.sensors.facing=false
+ro.vendor.sensors.scrn_ortn=false
+ro.vendor.sensors.pedometer=false
+ro.vendor.sensors.glance_approach=false
+ro.hardware.sensors=sanders
 
 #Trim properties
 ro.vendor.qti.sys.fw.trim_enable_memory=2147483648
