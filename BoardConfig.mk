@@ -47,8 +47,6 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_USES_64_BIT_BINDER := true
 
-DISABLE_DTC_OPTS := true
-
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := sanders,sanders_retail
 
@@ -124,17 +122,12 @@ BOARD_QTI_CAMERA_32BIT_ONLY := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_NO_CHARGER_LED := true
-WITH_CM_CHARGER := false
 
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
-
-# Enable dexpreopt to speed boot time
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
 
 # Display
 BOARD_USES_ADRENO := true
@@ -185,7 +178,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 25614597120 # 25014255 * 1024 mmcblk0p54
 TARGET_PER_MGR_ENABLED := true
 
 # Power
-TARGET_HAS_NO_WIFI_STATS := true
+TARGET_HAS_NO_WLAN_STATS := true
 
 # QC flags
 BOARD_USES_QCOM_HARDWARE := true
