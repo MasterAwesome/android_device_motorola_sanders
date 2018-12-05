@@ -81,8 +81,8 @@ void vendor_load_properties()
     property_override_dual("ro.product.model", "ro.vendor.product.model", sku.c_str());
 
     // fingerprint
-    property_override("ro.build.description", "sanders-7.1.1/NPS26.116-26/30:user/release-keys");
-    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys"); // safetynet hax
+    property_override("ro.build.description", "sanders-user 8.1.0 OPS28.65-36 9fea release-keys");
+    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/walleye/walleye:9/PPP3.180510.008/4811556:user/release-keys"); // safetynet hax
 
     // rmt_storage
     std::string device = GetProperty("ro.boot.device", "");
