@@ -1,0 +1,123 @@
+# Initialization
+on property:sys.boot_completed=1
+   chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+   chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+   chown system system /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+   chown system system /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+   chown system system /sys/module/workqueue/paramaters/power_efficient
+   chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+   chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+   chmod system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+   chmod system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+   chmod system system /sys/class/kgsl/kgsl-3d0/devfreq/governor
+   chmod 0664 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+   chmod 0664 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+   chmod 0664 /sys/class/kgsl/kgsl-3d0/devfreq/governor
+
+# Set default profile on first boot
+    exec u:r:init:s0 root root -- /vendor/bin/init.spectrum.sh
+    exec u:r:magisk:s0 root root -- /vendor/bin/init.spectrum.sh
+    exec u:r:su:s0 root root -- /vendor/bin/init.spectrum.sh
+
+# Enable Spectrum support
+   setprop spectrum.support 1
+
+# Add kernel name
+   setprop persist.spectrum.kernel MAYHEM
+
+# Balance (default profile)
+on property:persist.spectrum.profile=0
+    # CPU
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor blu_schedutil
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 652800
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2016000
+    write /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/down_rate_limit_us 200
+    write /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/iowait_boost_enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/blu_schedutil/up_rate_limit_us 4500
+    write /sys/module/msm_performance/parameters/touchboost 1
+    write /sys/module/workqueue/parameters/power_efficient Y
+
+    # GPU
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor msm-adreno-tz
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/min_freq 133000000
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/max_freq 650000000
+    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 650000000
+
+    # I/O Scheduler
+    write /sys/block/mmcblk0/queue/read_ahead_kb 512
+    write /sys/block/mmcblk0/queue/scheduler bfq
+
+    # Set thermal restrictions
+    write /sys/kernel/msm_thermal/enabled 0
+    write /sys/kernel/msm_thermal/zone0 "1401600 1785600 40 38"
+    write /sys/kernel/msm_thermal/zone1 "1324800 1555200 41 40"
+    write /sys/kernel/msm_thermal/zone2 "1228800 1478400 42 41"
+    write /sys/kernel/msm_thermal/zone3 "1228800 1401600 43 42"
+    write /sys/kernel/msm_thermal/zone4 "1190400 1324800 44 43"
+    write /sys/kernel/msm_thermal/zone5 "1190400 1248000 46 44"
+    write /sys/kernel/msm_thermal/zone6 "1113600 1190400 48 46"
+    write /sys/kernel/msm_thermal/zone7 "1036800 940800 53 50"
+    write /sys/kernel/msm_thermal/zone8 "729600 729600 65 60"
+    write /sys/kernel/msm_thermal/sampling_ms 8000
+    write /sys/kernel/msm_thermal/enabled 1
+
+# Performance
+on property:persist.spectrum.profile=1
+    # CPU
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 652800
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2208000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
+    write /sys/module/msm_performance/parameters/touchboost 1
+    write /sys/module/workqueue/parameters/power_efficient N
+
+    # GPU
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor msm-adreno-tz
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/min_freq 133000000
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/max_freq 700000000
+    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 700000000
+
+    # I/O Scheduler
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/scheduler cfq
+
+# Battery
+on property:persist.spectrum.profile=2
+    # CPU
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor smartmax_eps
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 652800
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1689600
+    write /sys/module/msm_performance/parameters/touchboost 0
+    write /sys/module/workqueue/parameters/power_efficient Y
+
+    # GPU
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor msm-adreno-tz
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/min_freq 133000000
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/max_freq 510000000
+    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 510000000
+
+    # I/O Scheduler
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
+    write /sys/block/mmcblk0/queue/scheduler sio
+
+# Gaming
+on property:persist.spectrum.profile=3
+    # CPU
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 652800
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2208000
+    write /sys/module/msm_performance/parameters/touchboost 1
+    write /sys/module/workqueue/parameters/power_efficient N
+
+    # GPU
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor performance
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/min_freq 133000000
+    write /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/max_freq 750000000
+    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 750000000
+
+    # I/O Scheduler
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/scheduler deadline
+

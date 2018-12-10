@@ -3,3 +3,7 @@ hw.aov.hotword_dsp_path            u:object_r:adspd_prop:s0
 hw.motosh.booted                   u:object_r:motosh_prop:s0
 ro.boot.hardware.revision          u:object_r:hw_rev_prop:s0
 hw.touch.status                    u:object_r:touch_prop:s0
+persist.audio.dirac.               u:object_r:dirac_prop:s0
+# Spectrum
+persist.spectrum.profile           u:object_r:spectrum_prop:s0
+

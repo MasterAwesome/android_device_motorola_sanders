@@ -5,3 +5,7 @@ type touch_prop, property_type;
 type diag_prop, property_type;
 type thermal_prop, property_type;
 type qti_telephony_prop, property_type;
+type dirac_prop, property_type;
+# Spectrum
+type spectrum_prop, property_type;
+
