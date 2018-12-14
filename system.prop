@@ -163,6 +163,7 @@ persist.dbg.wfc_avail_ovr=1
 
 # Media
 media.aac_51_output_enabled=true
+media.settings.xml=/system/vendor/etc/media_profiles.xml
 mm.enable.qcom_parser=135715
 mm.enable.sec.smoothstreaming=false
 mm.enable.smoothstreaming=false
