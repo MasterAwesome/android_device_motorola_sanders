@@ -135,4 +135,18 @@
     <string name="spectrum_title">Kernel Profile</string>
     <string name="spectrum_summary">Choose your kernel profile</string>
     <string name="spectrum_dialogTitle">Choose your kernel profile</string>
+
+    <!-- Kcal -->
+    <string name="kcal_title">Display Calibration</string>
+    <string name="kcal_summary">Display color calibration</string>
+    <string name="kcal_enabled_title">Enable KCAL</string>
+    <string name="kcal_enabled_summary">Turn on display calibration</string>
+    <string name="kcal_red">Red</string>
+    <string name="kcal_green">Green</string>
+    <string name="kcal_blue">Blue</string>
+    <string name="kcal_saturation">Saturation</string>
+    <string name="kcal_contrast">Contrast</string>
+    <string name="menu_reset">Reset</string>
+    <string name="kcal_color_temp">Color temperature (K)</string>
+
 </resources>

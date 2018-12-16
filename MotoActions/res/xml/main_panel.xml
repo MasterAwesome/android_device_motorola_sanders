@@ -19,6 +19,17 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <Preference
+        android:key="kcal"
+        android:title="@string/kcal_title"
+        android:summary="@string/kcal_summary"
+	android:icon="@drawable/ic_settings_kcal"
+        android:persistent="false" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.moto.actions"
+                android:targetClass="com.moto.actions.DisplayCalibration" />
+    </Preference>
+
+    <Preference
         android:key="gestures"
         android:title="@string/device_gestures_title"
         android:summary="@string/device_gestures_summary"
