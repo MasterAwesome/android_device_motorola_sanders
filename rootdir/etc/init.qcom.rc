@@ -58,7 +58,7 @@ on fs
 
 on init
     # Symbols required for motorola blobs
-    export LD_SHIM_LIBS /system/vendor/bin/adspd|libshim_adsp.so
+    export LD_SHIM_LIBS /system/vendor/bin/adspd|libshim_adsp.so:/system/vendor/lib/libjustshoot.so|libshim_adsp.so:libjustshoot_shim.so
 
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
@@ -482,6 +482,8 @@ on post-fs-data
     mkdir /data/vendor/vpp 0770 media media
 
     setprop vold.post_fs_data_done 1
+    
+    start ril-daemon
 
 service vendor.charger /charger
     class charger
