@@ -61,7 +61,7 @@ import android.view.KeyEvent;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
 
-import com.android.internal.os.DeviceKeyHandler;
+import com.android.internal.util.omni.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
 
 import com.moto.actions.util.FileUtils;
