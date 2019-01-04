@@ -345,4 +345,6 @@
    <!-- Should the pinner service pin the Camera application? -->
    <bool name="config_pinnerCameraApp">true</bool>
 
+    <dimen name="config_dialogCornerRadius">8.0dip</dimen>
+
 </resources>
