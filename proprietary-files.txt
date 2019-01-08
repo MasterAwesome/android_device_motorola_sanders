@@ -1,4 +1,4 @@
-# Proprietary files for potter
+# Proprietary files for sanders
 
 -app/datastatusnotification/datastatusnotification.apk
 -app/embms/embms.apk
@@ -88,13 +88,13 @@ etc/firmware/rampatch_tlv_3.0.tlv
 etc/firmware/rampatch_tlv_3.2.tlv
 etc/firmware/sensorhub-blacklist.txt
 etc/firmware/sensorhubfw.bin
-etc/firmware/synaptics-boe-potter-16112102-25d862-potter.tdat
-etc/firmware/synaptics-boe-s3203b-16112102-25d862-potter.tdat
+etc/firmware/synaptics-boe-sanders-16112102-25d862-sanders.tdat
+etc/firmware/synaptics-boe-s3203b-16112102-25d862-sanders.tdat
 etc/firmware/synaptics-s3508-16082601-255c40-addison.tdat
 etc/firmware/synaptics-s3508sga-16082601-255c40-addison.tdat
 etc/firmware/synaptics-s3508sga-16103104-255c40-albus.tdat
-etc/firmware/synaptics-tianma-potter-16120802-237533-potter.tdat
-etc/firmware/synaptics-tianma-s3203b-16120802-237533-potter.tdat
+etc/firmware/synaptics-tianma-sanders-16120802-237533-sanders.tdat
+etc/firmware/synaptics-tianma-s3203b-16120802-237533-sanders.tdat
 etc/firmware/upd-00000126-00001001-fed70128-fffe0001-02.tftf
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_Argentina.bin

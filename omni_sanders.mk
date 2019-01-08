@@ -29,8 +29,8 @@ TARGET_BOOTANIMATION_SIZE := 1080p
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/motorola/potter/device.mk)
-$(call inherit-product, vendor/motorola/potter/potter-vendor.mk)
+$(call inherit-product, device/motorola/sanders/device.mk)
+$(call inherit-product, vendor/motorola/sanders/sanders-vendor.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -40,8 +40,8 @@ TARGET_SCREEN_HEIGHT := 1920
 PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := potter
-PRODUCT_NAME := omni_potter
+PRODUCT_DEVICE := sanders
+PRODUCT_NAME := omni_sanders
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
 
