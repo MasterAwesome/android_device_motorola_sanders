@@ -1,9 +1,15 @@
 [
   {
-    "remote": "omnirom",
-    "repository": "android_kernel_motorola_msm8953",
+    "remote": "github",
+    "repository": "MasterAwesome/android_kernel_motorola_msm8953",
     "target_path": "kernel/motorola/msm8953",
-    "revision": "android-9.0"
+    "revision": "MMI-OPS28.65-36"
+  },
+  {
+    "remote": "github",
+    "repository": "MasterAwesome/proprietary_vendor_motorola_sanders",
+    "target_path": "vendor/motorola/sanders",
+    "revision": "lineage-16.0"
   },
   {
     "remote": "omnirom",
