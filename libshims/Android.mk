@@ -24,31 +24,13 @@ LOCAL_MODULE := libshim_adsp
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
-# Camera
+# IMS
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := justshoot_shim.cpp
-LOCAL_SHARED_LIBRARIES := libutils
-LOCAL_MODULE := libjustshoot_shim
+LOCAL_SRC_FILES := libqsap_shim.c
+LOCAL_SHARED_LIBRARIES := libqsap_sdk liblog
+LOCAL_C_INCLUDES := $(DEVICE_PATH)/softap/sdk
+LOCAL_MODULE := libqsap_shim
 LOCAL_MODULE_TAGS := optional
 LOCAL_PROPRIETARY_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
 
-include $(CLEAR_VARS)
-LOCAL_SRC_FILES := \
-    GraphicBuffer.cpp \
-    gui/GraphicBuffer.cpp \
-    gui/GraphicBufferAlloc.cpp \
-    gui/IGraphicBufferAlloc.cpp
-
-LOCAL_SHARED_LIBRARIES := \
-    libbinder \
-    libgui \
-    libhardware \
-    libutils \
-    liblog \
-    libcutils \
-    libui
-
-LOCAL_MODULE := libshim_buffer
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SHARED_LIBRARY)
