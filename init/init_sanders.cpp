@@ -70,31 +70,24 @@ void vendor_load_properties()
     if (platform != ANDROID_TARGET)
         return;
 
+    // sku
     std::string sku = android::base::GetProperty("ro.boot.hardware.sku", "");
     property_set("ro.product.model", sku.c_str());
+
+    // fingerprint
+    property_override("ro.build.description", "sanders-7.1.1/NPS26.116-26/30:user/release-keys");
+    property_set("ro.build.fingerprint","google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys"); // safetynet hax
 
     // rmt_storage
     std::string device = android::base::GetProperty("ro.boot.device", "");
     std::string radio = android::base::GetProperty("ro.boot.radio", "");
-    property_set("ro.vendor.hw.device", device.c_str());
-    property_set("ro.vendor.hw.radio", radio.c_str());
+    property_set("ro.hw.device", device.c_str());
+    property_set("ro.hw.radio", radio.c_str());
     property_set("ro.hw.fps", "true");
     property_set("ro.hw.imager", "12MP");
 
     num_sims();
-
-    if (sku == "XT1687") {
-        property_set("ro.hw.ecompass", "true");
-        property_set("ro.hw.nfc", "false");
-    }
-    else {
-        property_set("ro.hw.ecompass", "false");
-        property_set("ro.hw.nfc", "true");
-    }
-
-    if (sku == "XT1683") {
-        property_set("ro.hw.dtv", "true");
-    }
 }
 }  // namespace init
 } // namespace android
+
