@@ -305,3 +305,7 @@ persist.radio.sap_silent_pin=1 \
 persist.radio.always_send_plmn=true \
 persist.rcs.supported=1 \
 persist.dbg.ims_volte_enable=1 \
+persist.dbg.volte_avail_ovr=1 \
+persist.dbg.vt_avail_ovr=1 \
+persist.dbg.wfc_avail_ovr=1 \
+persist.radio.data_lte_sys_ind=1
