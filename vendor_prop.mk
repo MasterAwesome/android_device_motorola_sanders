@@ -132,7 +132,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dev.pm.dyn_samplingrate=1 \
     persist.demo.hdmirotationlock=false \
     ro.opengles.version=196610 \
-    ro.sf.lcd_density=480 \
     persist.debug.wfd.enable=1 \
     sdm.debug.disable_skip_validate=1 \
     debug.gralloc.enable_fb_ubwc=1 \
