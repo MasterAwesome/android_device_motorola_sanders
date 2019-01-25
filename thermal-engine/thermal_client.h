@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016, 2019, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -86,6 +86,10 @@ int thermal_client_config_set(struct config_instance *configs, unsigned int conf
 int thermal_client_register_callback(char *client_name, int (*callback)(int , void *, void *), void *data);
 int thermal_client_request(char *client_name, int req_data);
 void thermal_client_unregister_callback(int client_cb_handle);
+
+/* APIs for bandwidth clients to send/clear bandwidth perf levels to thermal-engine */
+int thermal_bandwidth_client_request(char *client_name, int req_data);
+void thermal_bandwidth_client_cancel_request(char *client_name);
 
 #ifdef __cplusplus
 }
