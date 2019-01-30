@@ -69,6 +69,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     camera.mot.startup_probing=0 \
     persist.camera.debug.logfile=0 \
     persist.camera.gyro.disable=0 \
+    persist.camera.eis.enable=1 \
     persist.camera.HAL3.enabled=1 \
     persist.camera.expose.aux=1 \
     vidc.enc.dcvs.extra-buff-count=2 \
