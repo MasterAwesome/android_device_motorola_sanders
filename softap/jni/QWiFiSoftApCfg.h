@@ -28,36 +28,60 @@
  */
 
 
-#ifndef _QSAP_H
-#define _QSAP_H
+#ifndef __QWIFISOFTAPCFG
+#define __QWIFISOFTAPCFG
 
-#if __cplusplus
-extern "C" {
+#define LOG_TAG "QWIFIAPCFG"
+
+#include "jni.h"
+#include <utils/Log.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <signal.h>
+#include <errno.h>
+#include <fcntl.h>
+
+#include <ctype.h>
+
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/socket.h>
+#include <sys/select.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+
+#include <linux/if.h>
+#include <linux/if_arp.h>
+#include <linux/if_ether.h>
+#include <linux/netlink.h>
+#include <linux/rtnetlink.h>
+#include <linux/wireless.h>
+
+#include <cutils/sockets.h>
+#include <private/android_filesystem_config.h>
+
+typedef unsigned char    u8;
+
+#define HWA_FORM        "%02X:%02X:%02X:%02X:%02X:%02X"
+#define HWA_ARG(x)        *(((u8 *)x + 0)), *(((u8 *)x + 1)), \
+                          *(((u8 *)x + 2)), *(((u8 *)x + 3)), \
+                          *(((u8 *)x + 4)), *(((u8 *)x + 5))
+
+#define MAX_RESP_SIZE       256
+#define MAX_CMD_SIZE        256
+#define MAX_EVT_BUF_SIZE    256
+#define MAX_RECV_BUF_SIZE   256
+
+#define MSGHDRLEN        ((int)(sizeof(struct nlmsghdr)))
+#define IFINFOLEN        ((int)(sizeof(struct ifinfomsg)))
+#define RTATTRLEN        ((int)(sizeof(struct rtattr)))
+
+#ifndef IFLA_WIRELESS
+#define IFLA_WIRELESS    (IFLA_MASTER + 1)
 #endif
 
-#include "qsap_api.h"
-
-s32 wifi_qsap_load_driver(void);
-s32 wifi_qsap_unload_driver(void);
-s32 wifi_qsap_stop_bss(void);
-s32 commit(void);
-s32 is_softap_enabled(void);
-s32 wifi_qsap_start_softap(void);
-s32 wifi_qsap_stop_softap(void);
-s32 wifi_qsap_start_wigig_softap(void);
-s32 wifi_qsap_stop_wigig_softap(void);
-s32 wifi_qsap_reload_softap(void);
-s32 wifi_qsap_unload_wifi_sta_driver(void);
-
-#ifdef QCOM_WLAN_CONCURRENCY
-s32 wifi_qsap_start_softap_in_concurrency(void);
-s32 wifi_qsap_stop_softap_in_concurrency(void);
 #endif
-
-s32 wifi_qsap_set_tx_power(s32);
-
-#if __cplusplus
-};  // extern "C"
-#endif
-
-#endif  // _QSAP_H

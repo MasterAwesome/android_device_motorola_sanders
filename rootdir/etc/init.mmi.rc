@@ -70,21 +70,9 @@ on post-fs
     chmod 0711 /persist/rfs/msm/mpss
     chmod 0771 /persist/rfs/msm/mpss/mot_rfs
 
-    swapon_all /system/vendor/etc/fstab.qcom
     write /proc/sys/vm/page-cluster 0
 
-   # Change permission for fingerprint sensor
-   chown system oem_5004 /sys/bus/spi/devices/spi8.0/nav
-   chown system oem_5004 /sys/bus/spi/devices/spi8.0/clk_enable
-   chown system oem_5004 /sys/bus/spi/devices/spi8.0/dev_enable
-   chown system oem_5004 /sys/bus/spi/devices/spi8.0/irq
-   chown system oem_5004 /sys/bus/spi/devices/spi8.0/irq_cnt
-   chmod 0440 /sys/bus/spi/devices/spi8.0/irq_cnt
-
 on post-fs-data
-    # AK09912 calibration file directory
-    mkdir /data/misc/akmd 0770 system compass
-
     #setup folder for WLAN WAPI
     chmod 0770 /data/wapi_certificate
 	
@@ -147,7 +135,7 @@ on post-fs-data
 
     # Required by FingerPrint Cards (FPC) via init so we don't need to give qseecomd or fingerprintd permissions to create them
     mkdir /data/fpc 0700 system system
-    mkdir /data/.fps 0770 system fingerp
+    mkdir /data/.fps 0770 system input
 
     #Folder for hardware properties
     mkdir /data/hardware_revisions 0755 system system
@@ -180,33 +168,18 @@ on boot
    # restore default_message_loglevel to KERN_WARNING
    write /proc/sys/kernel/printk "7 4 1 7"
 
-   # STML0 driver parameter permissions
-   chown root oem_5004 /sys/module/stml0xx/parameters/irq_disable
-   chmod 0660 /sys/module/stml0xx/parameters/irq_disable
-
    chown root oem_5004 /sys/module/phy_msm_usb/parameters/host_mode_disable
    chmod 0660 /sys/module/phy_msm_usb/parameters/host_mode_disable
    chown root oem_5004 /sys/devices/soc/7000000.ssusb/disable_id_pin
    chmod 0220 /sys/devices/soc/7000000.ssusb/disable_id_pin
 
-   # Change ownership and permission for vibrator
-   chown system system /sys/class/timed_output/vibrator/enable
-   chmod 0660 /sys/class/timed_output/vibrator/enable
-   chown root oem_5020 /sys/bus/i2c/devices/2-005a/reduce
-
-   # change permission for capsensor
-   chmod 0660 /sys/class/capsense/enable
-   chown system system sys/class/capsense/enable
-
-   #STML0 device permissions
-   chown system compass /dev/stml0xx
-   chmod 0660 /dev/stml0xx
-   chown compass compass /dev/stml0xx_as
-   chmod 0660 /dev/stml0xx_as
-   chown compass compass /dev/stml0xx_ms
-   chmod 0660 /dev/stml0xx_ms
-   chown compass compass /dev/stml0xx_akm
-   chmod 0660 /dev/stml0xx_akm
+   #change ownership and permission for LTR559
+   chown system system /sys/class/sensors/Rear\ Proximity\ sensor/enable
+   chown system system /sys/class/sensors/Rear\ Proximity\ sensor/poll_delay
+   chown system system /sys/class/sensors/Rear\ Proximity\ sensor/enable_wakeup
+   chmod 0660 /sys/class/sensors/Rear\ Proximity\ sensor/enable
+   chmod 0660 /sys/class/sensors/Rear\ Proximity\ sensor/poll_delay
+   chmod 0660 /sys/class/sensors/Rear\ Proximity\ sensor/enable_wakeup
 
    # Change permission for type C params
    chown root oem_5004 /sys/devices/soc/78b6000.i2c/i2c-2/2-0022/CC_state
@@ -216,6 +189,14 @@ on boot
    chmod 0660 /sys/class/i2c-adapter/i2c-2/2-002d/enable
    chown root oem_5004 /sys/class/i2c-adapter/i2c-2/2-002d/hsic_vdd
    chmod 0660 /sys/class/i2c-adapter/i2c-2/2-002d/hsic_vdd
+
+   # Change permission for fingerprint sensor
+   chown system oem_5004 /sys/bus/spi/devices/spi8.0/nav
+   chown system oem_5004 /sys/bus/spi/devices/spi8.0/clk_enable
+   chown system oem_5004 /sys/bus/spi/devices/spi8.0/dev_enable
+   chown system oem_5004 /sys/bus/spi/devices/spi8.0/irq
+   chown system oem_5004 /sys/bus/spi/devices/spi8.0/irq_cnt
+   chmod 0440 /sys/bus/spi/devices/spi8.0/irq_cnt
 
  # Change ownership and permission for backlight
    chown system system /sys/class/backlight/lcd-backlight:0/brightness
@@ -237,30 +218,10 @@ on boot
    chown system system /sys/class/timed_output/vibrator/enable
    chmod 0660 /sys/class/timed_output/vibrator/enable
 
-   # Change ownership and permission for laser_sensor
-   chown system system /sys/kernel/range/enable_sar
-   chmod 0660 /sys/kernel/range/enable_sar
-   chown system system /sys/kernel/range/set_delay_ms
-   chmod 0660 /sys/kernel/range/set_delay_ms
-   chown system system /sys/kernel/range/near
-   chmod 0660 /sys/kernel/range/near
-
-# Change ownership and permission for rear_sensor
-   chown system system /sys/class/i2c-dev/i2c-2/device/2-0049/enable_sar
-   chmod 0660 /sys/class/i2c-dev/i2c-2/device/2-0049/enable_sar
-   chown system system /sys/class/i2c-dev/i2c-2/device/2-0049/set_delay_ms
-   chmod 0660 /sys/class/i2c-dev/i2c-2/device/2-0049/set_delay_ms
-   chown system system /sys/class/i2c-dev/i2c-6/device/6-0049/enable_sar
-   chmod 0660 /sys/class/i2c-dev/i2c-6/device/6-0049/enable_sar
-   chown system system /sys/class/i2c-dev/i2c-6/device/6-0049/set_delay_ms
-   chmod 0660 /sys/class/i2c-dev/i2c-6/device/6-0049/set_delay_ms
-
-# Change the ownership of display TE files for tcmds
    chown root oem_5004 /sys/class/graphics/fb0/te_enable
    chown root oem_5004 /sys/class/graphics/fb0/frame_counter
 
    # Change ownership of aov related sysfs entries
-   wait /sys/kernel/aov/event
    chown audio audio /sys/kernel/aov/trigger
    chown audio audio /sys/kernel/aov/register
    chown audio audio /sys/kernel/aov/event
@@ -313,28 +274,17 @@ service adspd /system/vendor/bin/adspd
    user audio
    group audio input diag
 
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-    group input
-
 service vendor.mmi-boot-sh /system/vendor/bin/sh /system/vendor/bin/init.mmi.boot.sh
     class core
     user root
     oneshot
     disabled
 
-service mmi-laser-sh /system/vendor/bin/sh /system/vendor/bin/init.mmi.laser.sh
+# Sanders uses qti sensor service
+service vendor.sensors.qti /system/vendor/bin/sensors.qti
     class core
     user root
-    oneshot
-
-# Start Sensor daemon
-service motosh /system/vendor/bin/motosh boot
-    class main
-    user compass
-    group compass misc input
-    oneshot
+    group root
 
 service vendor.charge_only_mode /system/bin/charge_only_mode
     user root
@@ -360,3 +310,7 @@ on property:sys.wifi.tethering=false
 
 on property:ro.bootmode=normal
    write /sys/module/usb3813_hub/parameters/boost_val 3
+
+on property:sys.boot_completed=1
+    # Enable ZRAM on boot_complete
+    swapon_all /system/vendor/etc/fstab.qcom

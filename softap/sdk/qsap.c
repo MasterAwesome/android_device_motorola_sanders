@@ -79,7 +79,7 @@
 #endif
 
 
-#ifndef WIFI_SDIO_IF_DRIVER_MODULE_ARG
+#ifndef WIFI_SDIO_IF_DRIVER_MODULE_ARG 
 #define WIFI_SDIO_IF_DRIVER_MODULE_ARG  ""
 #endif
 
@@ -240,7 +240,7 @@ s32 wifi_qsap_load_driver(void)
     }
 
     sched_yield();
-
+    
 	ret = eSUCCESS;
 
 end:
