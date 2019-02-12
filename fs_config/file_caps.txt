@@ -13,10 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[AID_RFS]
+[AID_VENDOR_RFS]
 value:2951
 
-[AID_RFS_SHARED]
+[AID_VENDOR_RFS_SHARED]
 value:2952
 
 [system/bin/imsdatadaemon]
@@ -36,3 +36,9 @@ user: AID_SYSTEM
 group: AID_SYSTEM
 mode: 0755
 caps: NET_BIND_SERVICE
+
+[system/vendor/bin/loc_launcher]
+mode: 0755
+user:  AID_GPS
+group: AID_GPS
+caps: SETUID SETGID
