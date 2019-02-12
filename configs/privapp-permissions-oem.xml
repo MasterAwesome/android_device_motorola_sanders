@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <permissions>
-   <privapp-permissions package="com.android.fmradio">
+    <privapp-permissions package="com.android.fmradio">
         <permission name="android.permission.ACCESS_FM_RADIO"/>
         <permission name="android.permission.MODIFY_AUDIO_ROUTING"/>
         <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
@@ -22,13 +22,7 @@
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
     </privapp-permissions>
 
-    <privapp-permissions package="com.qti.dpmserviceapp">
-        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
-    </privapp-permissions>
-
     <privapp-permissions package="com.qualcomm.location">
-        <permission name="android.permission.CONTROL_LOCATION_UPDATES"/>
-        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
         <permission name="android.permission.MANAGE_USERS"/>
     </privapp-permissions>
 
@@ -40,10 +34,5 @@
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
         <permission name="android.permission.PACKET_KEEPALIVE_OFFLOAD"/>
     </privapp-permissions>
-
-    <privapp-permissions package="org.codeaurora.ims">
-        <permission name="android.permission.READ_PRECISE_PHONE_STATE"/>
-        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
-        <permission name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"/>
-    </privapp-permissions>
 </permissions>
+
