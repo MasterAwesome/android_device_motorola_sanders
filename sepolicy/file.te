@@ -20,7 +20,7 @@ type pds_omadm_file, file_type, data_file_type;
 type persist_audio_file, file_type, data_file_type;
 
 type moodle_data_file, file_type, data_file_type, core_data_file_type;
-type cutback_data_file, file_type, data_file_type, core_data_file_type;
+type cutback_data_file, file_type, data_file_type;
 
 type dbvc_data_file, file_type, data_file_type, core_data_file_type;
 
@@ -32,7 +32,7 @@ type wapi_supplicant_data_file, file_type, data_file_type, core_data_file_type;
 type netmgr_data_file, file_type, data_file_type, core_data_file_type;
 
 # sysfs
-type sysfs_adsp, fs_type, sysfs_type;
+#type sysfs_adsp, fs_type, sysfs_type;
 type sysfs_homebutton, fs_type, sysfs_type, mlstrustedobject;
 type sysfs_mmi_fp, fs_type, sysfs_type;
 type sysfs_mmi_laser, fs_type, sysfs_type;
@@ -56,8 +56,11 @@ type sysfs_rmt_storage, fs_type, sysfs_type;
 type debugfs_rmt_storage, debugfs_type, fs_type;
 type debugfs_rpm, debugfs_type, fs_type;
 type debugfs_wlan, debugfs_type, fs_type;
+type debugfs_kgsl, debugfs_type, fs_type;
 type perfd_data_file, file_type, data_file_type, core_data_file_type;
 type proc_kernel_sched, fs_type;
 type sysfs_power_management, sysfs_type, fs_type;
 type proc_touchpanel, fs_type;
+
+type sysfs_msm_subsys, sysfs_type, fs_type;
 
