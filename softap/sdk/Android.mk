@@ -10,9 +10,9 @@ LOCAL_MODULE:= libqsap_sdk
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_CFLAGS += -DSDK_VERSION=\"0.0.1.0\" -Wall -Wno-error
+LOCAL_CFLAGS += -DSDK_VERSION=\"0.0.1.0\"
 
-LOCAL_LDLIBS := -llog
+LOCAL_USE_VNDK := true
 
 LOCAL_COPY_HEADERS_TO := sdk/softap/include
 LOCAL_COPY_HEADERS := qsap_api.h
@@ -58,12 +58,24 @@ ifdef WIFI_DRIVER_DEF_CONF_FILE
 LOCAL_CFLAGS += -DWIFI_DRIVER_DEF_CONF_FILE=\"$(WIFI_DRIVER_DEF_CONF_FILE)\"
 endif
 
+LOCAL_CFLAGS += \
+    -Wall \
+    -Werror \
+    -Wno-unused-variable \
+    -Wno-unused-value \
+    -Wno-format \
+    -Wno-sometimes-uninitialized \
+    -Wno-enum-conversion \
+    -Wno-unused-parameter \
+
 LOCAL_SRC_FILES := qsap_api.c \
                    qsap.c
 
 LOCAL_PRELINK_MODULE := false
 
 LOCAL_SHARED_LIBRARIES := libnetutils libutils libbinder libcutils libhardware_legacy libnl liblog
+
+LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
 

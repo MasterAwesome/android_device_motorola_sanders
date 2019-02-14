@@ -77,8 +77,7 @@ enum error_val {
     eERR_LOAD_FAILED_SDIOIF,
     eERR_LOAD_FAILED_SOFTAP,
     eERR_SET_CHAN_RANGE,
-    eERR_GET_AUTO_CHAN,
-    eERR_SET_TX_POWER
+    eERR_GET_AUTO_CHAN
 };
 
 #ifndef WIFI_DRIVER_CONF_FILE
@@ -88,6 +87,10 @@ enum error_val {
 #ifndef WIFI_DRIVER_DEF_CONF_FILE
 #define WIFI_DRIVER_DEF_CONF_FILE        NULL
 #endif
+
+/** Configuration file name for SAP+SAP*/
+#define CONFIG_FILE_2G "/data/vendor/wifi/hostapd_dual2g.conf"
+#define CONFIG_FILE_5G "/data/vendor/wifi/hostapd_dual5g.conf"
 
 /** Configuration file name */
 #define CONFIG_FILE "/data/misc/wifi/hostapd.conf"
@@ -245,6 +248,14 @@ enum eCmd_req {
     eCMD_REQ_LAST
 };
 
+/** config request index - in the array Conf_req[] */
+enum eConf_req {
+    CONF_2g = 0,
+    CONF_5g = 1,
+
+    CONF_REQ_LAST
+};
+
 /**
   * Command numbers, these numbers form the index into the array of
   * command names stored in the 'cmd_list'.
@@ -334,6 +345,9 @@ typedef enum esap_cmd {
 
     eCMD_ENABLE_WIGIG_SOFTAP = 72,
     eCMD_INTERFACE           = 73,
+    eCMD_SSID2               = 74,
+    eCMD_BRIDGE              = 75,
+    eCMD_CTRL_INTERFACE      = 76,
 
     eCMD_LAST     /** New command numbers should be added above this */
 } esap_cmd_t;
@@ -495,7 +509,7 @@ typedef struct sap_auto_channel_info {
 #define IS_VALID_BSSID(x) (((value == ENABLE) || (value == DISABLE)) ? TRUE: FALSE)
 
 /** Validate the length of the passphrase */
-#define IS_VALID_PASSPHRASE_LEN(x) (((x >= PASSPHRASE_MIN) && (x <= PASSPHRASE_MAX)) ? TRUE: FALSE)
+#define IS_VALID_PASSPHRASE_LEN(x) ((((x >= PASSPHRASE_MIN) && (x <= PASSPHRASE_MAX)) || (x == 0)) ? TRUE: FALSE)
 
 /** Validate the beacon interval */
 #define IS_VALID_BEACON(x) (((x >= BCN_INTERVAL_MIN) && (x <= BCN_INTERVAL_MAX)) ? TRUE: FALSE)
@@ -604,6 +618,8 @@ int qsap_get_mode(s32 *pmode);
 int qsap_prepare_softap(void);
 int qsap_unprepare_softap(void);
 int qsap_is_fst_enabled(void);
+int qsap_control_bridge(int argc, char ** argv);
+int linux_get_ifhwaddr(const char *ifname, char *addr);
 
 #if __cplusplus
 };  // extern "C"
