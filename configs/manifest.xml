@@ -218,6 +218,10 @@
         <name>android.hardware.renderscript</name>
         <transport arch="32+64">passthrough</transport>
         <version>1.0</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>default</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.sensors</name>
@@ -324,15 +328,6 @@
         <version>1.0</version>
         <interface>
             <name>IDisplayPostproc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.omni.power</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IOmniPower</name>
             <instance>default</instance>
         </interface>
     </hal>
