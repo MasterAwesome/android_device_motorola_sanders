@@ -190,6 +190,7 @@ TARGET_PER_MGR_ENABLED := true
 
 # Power HAL
 TARGET_PROVIDES_POWERHAL := true
+TARGET_HAS_NO_WIFI_STATS := true
 
 # RIL
 TARGET_RIL_VARIANT := caf
@@ -226,3 +227,4 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_P2P          := "p2p"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
+
