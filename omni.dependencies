@@ -9,7 +9,7 @@
     "remote": "github",
     "repository": "MasterAwesome/proprietary_vendor_motorola_sanders",
     "target_path": "vendor/motorola/sanders",
-    "revision": "lineage-16.0"
+    "revision": "android-9.0"
   },
   {
     "remote": "omnirom",
