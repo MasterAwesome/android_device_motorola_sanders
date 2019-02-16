@@ -306,7 +306,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service-qti
+    android.hardware.power@1.1-service-qti
 
 # Qualcomm
 PRODUCT_COPY_FILES += \
@@ -395,6 +395,7 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
+    libcld80211 \
     hostapd \
     libqsap_sdk \
     libwpa_client \
