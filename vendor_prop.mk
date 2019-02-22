@@ -269,6 +269,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.is_wps_enabled=true \
     persist.vendor.radio.mt_sms_ack=30 \
     persist.vendor.radio.0x9e_not_callname=1 \
+    persist.vendor.radio.multisim_switch_support=true \
     persist.vendor.radio.qcril_uim_vcc_feature=1 \
     persist.mot.gps.conf.from.sim=true \
     persist.net.doxlat=true \
