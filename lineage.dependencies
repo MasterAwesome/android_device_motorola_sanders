@@ -2,16 +2,16 @@
   {
     "repository": "MasterAwesome/proprietary_vendor_motorola_sanders",
     "target_path": "vendor/motorola/sanders",
-    "branch": "lineage-16.0"
+    "revision": "lineage-16.0"
   },
   {
     "repository": "MasterAwesome/android_kernel_motorola_msm8953",
     "target_path": "kernel/motorola/msm8953",
-    "branch": "MMI-OPS28.65-36"
+    "revision": "MMI-OPS28.65-36"
   },
   {
     "repository":  "LineageOS/android_packages_resources_devicesettings",
-    "target_path": "packages/resources/devicesettings"
-    "branch": "lineage-16.0"
+    "target_path": "packages/resources/devicesettings",
+    "revision": "lineage-16.0"
   }
 ]
