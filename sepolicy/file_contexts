@@ -17,7 +17,6 @@
 /system/vendor/bin/hw/motorola\.hardware\.camera\.provider@2\.4-service u:object_r:hal_camera_default_exec:s0
 /system/vendor/lib/motorola\.hardware\.camera\.device@1\.0.so                  u:object_r:hal_camera_default_exec:s0
 /system/vendor/lib/motorola\.hardware\.camera\.provider@2\.4.so                u:object_r:hal_camera_default_exec:s0
-/system/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.service_32                u:object_r:hal_fingerprint_default_exec:s0
 
 
 
@@ -152,6 +151,7 @@
 
 # Fingerprint custom hal
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-fpcservice u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.sanders u:object_r:hal_fingerprint_default_exec:s0
 
 /(vendor|system/vendor)/bin/hw/android\.hardware\.health@2\.0-service\.sanders        u:object_r:hal_health_default_exec:s0
 
