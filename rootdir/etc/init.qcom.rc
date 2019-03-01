@@ -978,7 +978,7 @@ on property:sys.boot_completed=1
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
     # Set idle GPU to 133 Mhz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 7
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
 
     # disable wakelocks
     write /sys/module/wakeup/parameters/enable_qcom_rx_wakelock_ws 0
