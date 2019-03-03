@@ -22,6 +22,11 @@ def FullOTA_InstallEnd(info):
 
 def ReplaceDeviceConfig(info):
   info.script.Mount("/system")
+  info.script.AppendExtra('ui_print("Checking Fingerprint firmware level");')
+  info.script.AppendExtra('ui_print("Running " + getprop("ro.bootloader") + " bootloader");')
+  info.script.AppendExtra('set_metadata("/system/etc/patch_fingerprint.sh", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);')
+  info.script.AppendExtra('ifelse(getprop("ro.bootloader") == "0xC212", run_program("/system/etc/patch_fingerprint.sh"));')
+  info.script.AppendExtra('ifelse(getprop("ro.bootloader") == "0xC212", set_metadata("/system/vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-fpcservice", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "selabel", "u:object_r:hal_fingerprint_default_exec:s0"));')
   info.script.AppendExtra('ui_print("Checking NFC, compass and DTV support");')
   info.script.AppendExtra('run_program("/sbin/sh", "/system/vendor/bin/check_features.sh");')
   info.script.Unmount("/system")
