@@ -132,6 +132,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     LineageActions
 
+#Lineage HALs
+# Trust
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
+
+# LiveDisplay native
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sdm
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8953 \
