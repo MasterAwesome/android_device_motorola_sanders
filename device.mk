@@ -194,8 +194,9 @@ PRODUCT_PACKAGES += \
     fingerprint.msm8953
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/releasetools/fp_c212.zip:/system/etc/fp_c212.zip \
-    $(LOCAL_PATH)/releasetools/patch_fingerprint.sh:/system/etc/patch_fingerprint.sh
+    $(LOCAL_PATH)/releasetools/fp_c212.zip:system/etc/fp_c212.zip \
+    $(LOCAL_PATH)/releasetools/patch_fingerprint.sh:system/etc/patch_fingerprint.sh
+
 # FM
 PRODUCT_PACKAGES += \
     FMRadio \
