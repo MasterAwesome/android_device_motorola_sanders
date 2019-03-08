@@ -1,4 +1,4 @@
-FP_PATH := device/motorola/sanders/fingerprint_c1212
+FP_PATH := device/motorola/sanders/fingerprint_c1212/fp_c1212
 
 TARGET_GENERATED_FIRMWARE_ZIP := $(TARGET_OUT_INTERMEDIATES)/ETC/fp_c1212.zip
 
