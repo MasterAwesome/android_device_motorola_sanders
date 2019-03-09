@@ -19,5 +19,5 @@ if [ "$firmware_lvl" = "0xC212" ]; then
 fi
 
 #Cleanup
-rm /system/etc/fp_c212.zip
+rm /system/etc/fp_c1212.zip
 rm -- "$0"
