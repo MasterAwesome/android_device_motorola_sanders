@@ -17,3 +17,8 @@ get_prop(system_app, diag_prop);
 binder_call(system_app, qtitetherservice_service);
 binder_call(system_app, wificond);
 
+allow system_app adspd_prop:file read;
+allow system_app bg_boot_complete_prop:file read;
+allow system_app bg_daemon_prop:file read;
+allow system_app boottime_prop:file read;
+allow system_server console_silent_prop:file read;

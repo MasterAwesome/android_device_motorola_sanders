@@ -1,2 +1,5 @@
 allow radio system_app_data_file:dir getattr;
 allow radio qmuxd_socket:sock_file write;
+allow radio adspd_prop:file read;
+allow radio bg_boot_complete_prop:file read;
+allow radio bg_daemon_prop:file read;

@@ -7,3 +7,14 @@ allow priv_app proc:file { getattr open };
 allow priv_app sysfs:file { getattr open read };
 
 get_prop(priv_app, adspd_prop);
+
+allow priv_app bg_boot_complete_prop:file read;
+allow priv_app bg_daemon_prop:file read;
+allow priv_app boottime_prop:file read;
+allow priv_app cnd_vendor_prop:file read;
+allow priv_app console_silent_prop:file read;
+allow priv_app ctl_LKCore_prop:file read;
+allow priv_app ctl_bugreport_prop:file read;
+allow priv_app ctl_console_prop:file read;
+allow priv_app ctl_default_prop:file read;
+allow priv_app sysfs_android_usb:file open;
