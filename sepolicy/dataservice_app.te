@@ -3,3 +3,9 @@ binder_call(dataservice_app, cnd)
 
 allow dataservice_app cnd_data_file:file r_file_perms;
 allow dataservice_app cnd_data_file:dir search;
+allow dataservice_app adspd_prop:file read;
+allow dataservice_app bg_boot_complete_prop:file read;
+allow dataservice_app bg_daemon_prop:file read;
+allow dataservice_app boottime_prop:file read;
+allow dataservice_app console_silent_prop:file read;
+
