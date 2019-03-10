@@ -1,1 +1,4 @@
 get_prop(untrusted_app_25, vendor_camera_prop);
+allow untrusted_app_25 adspd_prop:file read;
+allow untrusted_app_25 bg_boot_complete_prop:file read;
+allow untrusted_app_25 bg_daemon_prop:file read;
