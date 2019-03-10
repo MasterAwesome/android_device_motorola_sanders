@@ -7,7 +7,7 @@ echo "This device is running $firmware_lvl bootloader"
 
 #Extract our fp files here
 if [ "$firmware_lvl" = "0xC212" ]; then
-    unzip /system/etc/fp_c1212.zip -d /
+    unzip -o /system/etc/fp_c1212.zip -d /
     #Remove N based FP files
     rm -f "/system/lib/hw/fingerprint.msm8953.so"
     rm -f "/system/lib/lib_fpc_tac_shared.so"
