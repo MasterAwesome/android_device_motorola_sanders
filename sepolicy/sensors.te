@@ -1,2 +1,2 @@
 allow sensors persist_file:file read;
-
+allow sensors persist_file:dir getattr;
