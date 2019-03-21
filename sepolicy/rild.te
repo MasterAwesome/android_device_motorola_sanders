@@ -23,4 +23,5 @@ set_prop(rild, vendor_radio_prop)
 
 allow rild system_data_file:dir { add_name open read remove_name write };
 allow rild system_data_file:sock_file { create unlink write };
+allow rild system_data_file:dir remove_name;
 
