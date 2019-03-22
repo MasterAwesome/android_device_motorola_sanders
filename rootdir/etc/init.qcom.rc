@@ -566,9 +566,9 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
    writepid /dev/cpuset/system-background/tasks
 
 service vendor.time_daemon /vendor/bin/time_daemon
-   class late_start
-   user root
-   group root
+   class main
+   user system
+   group system
    writepid /dev/cpuset/system-background/tasks
 
 service audiod /vendor/bin/audiod
