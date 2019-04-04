@@ -22,7 +22,7 @@
         android:key="gestures"
         android:title="@string/device_gestures_title"
         android:summary="@string/device_gestures_summary"
-        android:icon="@drawable/ic_settings_gestures">
+        android:icon="@drawable/ic_settings_gesturess">
             <intent
                 android:targetPackage="com.moto.actions"
                 android:targetClass="com.moto.actions.GestureSettingsActivity" />
@@ -48,4 +48,16 @@
                 android:targetClass="com.moto.actions.FPGestureSettingsActivity" />
     </Preference>
 
+    <ListPreference
+        android:key="spectrum"
+        android:title="@string/spectrum_title"
+        android:summary="@string/spectrum_summary"
+        android:defaultValue="0"
+        android:entries="@array/spectrum_profiles"
+        android:entryValues="@array/spectrum_values"
+        android:dialogTitle="@string/spectrum_dialogTitle"
+	android:icon="@drawable/ic_settings_spectrum"/>
+	    <intent
+		android:targetPackage="com.moto.actions"
+		android:targetClass="com.moto.actions.ShitPanelSettings" />
 </PreferenceScreen>

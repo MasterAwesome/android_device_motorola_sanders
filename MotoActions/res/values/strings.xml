@@ -17,7 +17,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Title and summary -->
-    <string name="moto_actions_title">Moto Actions</string>
+    <string name="moto_actions_title">Moto Shit</string>
+    <string name="moto_actions_summary">Yea we call it shit</string>
 
     <!-- Device gestures -->
     <string name="device_gestures_title">Device gestures</string>
@@ -129,4 +130,9 @@
     <string name="dirac_preset_country">Country</string>
     <string name="dirac_preset_dance">Dance</string>
     <string name="dirac_preset_metal">Metal</string>
+
+    <!-- Spectrum Profiles -->
+    <string name="spectrum_title">Kernel Profile</string>
+    <string name="spectrum_summary">Choose your kernel profile</string>
+    <string name="spectrum_dialogTitle">Choose your kernel profile</string>
 </resources>

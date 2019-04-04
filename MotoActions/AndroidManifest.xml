@@ -19,6 +19,7 @@
         android:allowBackup="true"
         android:label="@string/moto_actions_title"
         android:icon="@drawable/ic_gesture"
+        android:summary="@string/moto_actions_summary"
         android:persistent="true">
 
         <provider
@@ -59,7 +60,7 @@
         <activity
             android:name=".ActionsPreferenceActivity"
             android:label="@string/moto_actions_title"
-            android:summary="@string/device_gestures_summary"
+            android:summary="@string/moto_actions_summary"
             android:theme="@style/MotoActions">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
