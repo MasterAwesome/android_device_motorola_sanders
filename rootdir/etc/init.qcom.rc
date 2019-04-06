@@ -269,9 +269,11 @@ on boot
     chown system radio /sys/android_touch/gesture_swipe_up
     chmod 0660 /sys/android_touch/gesture_swipe_up
 
+    # cpusets on boot
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/foreground/cpus 0-3,6-7
     write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/restricted/cpus 0-3
     write /dev/cpuset/system-background/cpus 0-3
 
     # add a cpuset for the camera daemon
