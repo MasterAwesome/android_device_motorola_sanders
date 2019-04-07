@@ -42,12 +42,6 @@
     "revision": "android-9.0"
   },
   {
-    "remote": "omnirom",
-    "repository": "android_vendor_qcom_opensource_interfaces",
-    "target_path": "vendor/qcom/opensource/interfaces",
-    "revision": "android-9.0"
-  } ,
-  {
   "remote": "omnirom",
   "repository": "android_vendor_nxp-nfc_interfaces_opensource_nfc",
   "target_path": "vendor/nxp/opensource/interfaces/nfc",
