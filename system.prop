@@ -116,8 +116,6 @@ persist.camera.video.ubwc=0
 persist.hwc.enable_vds=1
 debug.sf.recomputecrop=0
 debug.enable.sglscale=1
-persist.debug.wfd.enable=1
-persist.sys.wfd.virtual=0
 
 #Disable Skip Validate
 sdm.debug.disable_skip_validate=1
