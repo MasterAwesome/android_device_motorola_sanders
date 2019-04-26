@@ -12,7 +12,11 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
+  <!-- SwitchPreference
+            android:key="dirac"
+            android:summary="@string/dirac_summary"
+            android:title="@string/dirac_title"
+            android:defaultValue="false" /-->
     <ListPreference
         android:key="dirac_headset_pref"
         android:entries="@array/dirac_headset_pref_entries"

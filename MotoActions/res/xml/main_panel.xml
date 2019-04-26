@@ -2,13 +2,10 @@
 <!--
      Copyright (C) 2015-2016 The CyanogenMod Project
      Copyright (C) 2017 The LineageOS Project
-
      Licensed under the Apache License, Version 2.0 (the "License"
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-
           http://www.apache.org/licenses/LICENSE-2.0
-
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,7 +15,20 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <Preference
+
+    <PreferenceCategory
+        android:title="@string/displayheader">
+	<Preference
+        android:key="doze"
+        android:title="@string/ambient_display_title"
+        android:summary="@string/ambient_display_manage_summary"
+        android:icon="@drawable/ic_settings_doze">
+            <intent
+                android:targetPackage="com.moto.actions"
+                android:targetClass="com.moto.actions.DozeSettingsActivity" />
+        </Preference>
+
+	<Preference
         android:key="kcal"
         android:title="@string/kcal_title"
         android:summary="@string/kcal_summary"
@@ -27,9 +37,13 @@
         <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.moto.actions"
                 android:targetClass="com.moto.actions.DisplayCalibration" />
-    </Preference>
+        </Preference>
+    </PreferenceCategory>
 
-    <Preference
+
+    <PreferenceCategory
+        android:title="@string/gesturesheader">
+        <Preference
         android:key="gestures"
         android:title="@string/device_gestures_title"
         android:summary="@string/device_gestures_summary"
@@ -37,19 +51,9 @@
             <intent
                 android:targetPackage="com.moto.actions"
                 android:targetClass="com.moto.actions.GestureSettingsActivity" />
-    </Preference>
+        </Preference>
 
-    <Preference
-        android:key="doze"
-        android:title="@string/ambient_display_title"
-        android:summary="@string/ambient_display_manage_summary"
-        android:icon="@drawable/ic_settings_doze">
-            <intent
-                android:targetPackage="com.moto.actions"
-                android:targetClass="com.moto.actions.DozeSettingsActivity" />
-    </Preference>
-
-    <Preference
+        <Preference
         android:key="fp_gestures"
         android:title="@string/fingerprint_gestures_title"
         android:summary="@string/fingerprint_gestures_manage_summary"
@@ -57,9 +61,23 @@
             <intent
                 android:targetPackage="com.moto.actions"
                 android:targetClass="com.moto.actions.FPGestureSettingsActivity" />
-    </Preference>
+        </Preference>
+    </PreferenceCategory>
 
-    <ListPreference
+    <PreferenceCategory
+        android:title="@string/extrasheader">
+        <Preference
+        android:key="dirac"
+        android:title="@string/dirac_title"
+        android:summary="@string/dirac_summary"
+        android:icon="@drawable/ic_settings_dirac"
+        android:persistent="false" >
+           <intent 
+                android:targetPackage="com.moto.actions"
+                android:targetClass="com.moto.actions.dirac.DiracActivity" />
+        </Preference>
+
+        <ListPreference
         android:key="spectrum"
         android:title="@string/spectrum_title"
         android:summary="@string/spectrum_summary"
@@ -70,5 +88,6 @@
 	android:icon="@drawable/ic_settings_spectrum"/>
 	    <intent
 		android:targetPackage="com.moto.actions"
-		android:targetClass="com.moto.actions.ShitPanelSettings" />
+		android:targetClass="com.moto.actions.ShitPanelSettings" />         
+   </PreferenceCategory>
 </PreferenceScreen>

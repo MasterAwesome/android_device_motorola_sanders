@@ -102,7 +102,16 @@
             android:label="@string/screen_off_gestures_title"
             android:theme="@style/MotoActions">
         </activity>
-
+        
+        <!-- Dirac Sounds -->
+        <activity
+            android:name="com.moto.actions.dirac.DiracActivity"
+            android:label="@string/dirac_title"
+	    android:theme="@style/MotoActions">
+            <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -17,7 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Title and summary -->
-    <string name="moto_actions_title">Moto Shit</string>
+    <string name="moto_actions_title">Moto Settings</string>
     <string name="moto_actions_summary">Yea we call it shit</string>
 
     <!-- Device gestures -->
@@ -91,6 +91,13 @@
    <string name="haptic_feedback_summary">Vibrate when a touchscreen gesture is detected</string>
 
     <!-- Dirac settings -->
+    <!-- Label for feature switch [CHAR LIMIT=30] -->
+    <string name="switch_bar_on">On</string>
+
+    <!-- Label for feature switch [CHAR LIMIT=30] -->
+    <string name="switch_bar_off">Off</string>
+
+    <string name="sound_title">Dirac</string>
     <string name="dirac_title">Dirac sound enhancer</string>
     <string name="dirac_summary">Optimize audio quality</string>
     <string name="dirac_headset_title">Choose headphone type</string>
@@ -135,6 +142,11 @@
     <string name="spectrum_title">Kernel Profile</string>
     <string name="spectrum_summary">Choose your kernel profile</string>
     <string name="spectrum_dialogTitle">Choose your kernel profile</string>
+ 
+    <!-- Headers -->
+    <string name="displayheader">Display</string>
+    <string name="gesturesheader">Gestures</string>
+    <string name="extrasheader">Extras</string>
 
     <!-- Kcal -->
     <string name="kcal_title">Display Calibration</string>
