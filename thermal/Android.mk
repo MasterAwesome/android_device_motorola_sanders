@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2015 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,10 +15,16 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := libqsap_shim.c
-LOCAL_SHARED_LIBRARIES := libqsap_sdk liblog libcutils libutils
-LOCAL_C_INCLUDES := $(TOP)/system/qcom/softap/sdk
-LOCAL_MODULE := libqsap_shim
-LOCAL_MODULE_TAGS := optional
+
+LOCAL_MODULE := thermal.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_PROPRIETARY_MODULE := true
+
+LOCAL_SRC_FILES := thermal.c
+LOCAL_SRC_FILES += thermal-8953.c
+
+LOCAL_SHARED_LIBRARIES := liblog libcutils
+LOCAL_MODULE_TAGS := optional
+LOCAL_CFLAGS := -Wno-unused-parameter
+
 include $(BUILD_SHARED_LIBRARY)

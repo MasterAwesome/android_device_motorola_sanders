@@ -210,9 +210,7 @@ PRODUCT_PACKAGES += \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
-    telephony-ext \
-    QPerformance \
-    UxPerformance
+    telephony-ext
 
 # IMS
 PRODUCT_PACKAGES += \
