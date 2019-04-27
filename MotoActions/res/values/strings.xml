@@ -148,6 +148,9 @@
     <string name="gesturesheader">Gestures</string>
     <string name="extrasheader">Extras</string>
 
+    <!-- QS tile title -->
+    <string name="dirac_qs_tile_title">Dirac Sound</string>
+
     <!-- Kcal -->
     <string name="kcal_title">Display Calibration</string>
     <string name="kcal_summary">Display color calibration</string>
