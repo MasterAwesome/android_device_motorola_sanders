@@ -121,6 +121,7 @@ TARGET_QCOM_DISPLAY_VARIANT := caf-msm8996
 TARGET_QCOM_AUDIO_VARIANT := caf-msm8996
 TARGET_QCOM_MEDIA_VARIANT := caf-msm8996
 TARGET_QCOM_BLUETOOTH_VARIANT := caf-msm8996
+TARGET_WLAN_VARIANT := caf
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
@@ -214,6 +215,7 @@ include vendor/omni/sepolicy/sepolicy.mk
 
 
 # Wifi
+PRODUCT_VENDOR_MOVE_ENABLED      := true
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_HAS_QCOM_WLAN_SDK          := true
 BOARD_WLAN_DEVICE                := qcwcn
