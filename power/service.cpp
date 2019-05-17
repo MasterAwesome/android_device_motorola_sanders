@@ -1,25 +1,33 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (c) 2019, The Linux Foundation. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimer in the documentation and/or other materials provided
+ *       with the distribution.
+ *     * Neither the name of The Linux Foundation nor the names of its
+ *       contributors may be used to endorse or promote products derived
+ *       from this software without specific prior written permission.
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+ * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifdef V1_0_HAL
-#define LOG_TAG "android.hardware.power@1.0-service-qti"
-#else
-#define LOG_TAG "android.hardware.power@1.1-service-qti"
-#endif
+#define LOG_TAG "android.hardware.power@1.2-service"
 
 #include <android/log.h>
 #include <hidl/HidlTransportSupport.h>
@@ -35,28 +43,19 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 // Generated HIDL files
-#ifdef V1_0_HAL
-using android::hardware::power::V1_0::IPower;
-using android::hardware::power::V1_0::implementation::Power;
-#else
-using android::hardware::power::V1_1::IPower;
-using android::hardware::power::V1_1::implementation::Power;
-#endif
+using android::hardware::power::V1_2::IPower;
+using android::hardware::power::V1_2::implementation::Power;
 
 int main() {
 
     status_t status;
     android::sp<IPower> service = nullptr;
 
-#ifdef V1_0_HAL
-    ALOGI("Power HAL Service 1.0 for QCOM is starting.");
-#else
-    ALOGI("Power HAL Service 1.1 for QCOM is starting.");
-#endif
+    ALOGI("Power HAL Service 1.2 is starting.");
 
     service = new Power();
     if (service == nullptr) {
-        ALOGE("Can not create an instance of Power HAL Iface, exiting.");
+        ALOGE("Can not create an instance of Power HAL interface.");
 
         goto shutdown;
     }
@@ -65,7 +64,7 @@ int main() {
 
     status = service->registerAsService();
     if (status != OK) {
-        ALOGE("Could not register service for Power HAL Iface (%d).", status);
+        ALOGE("Could not register service for Power HAL(%d).", status);
         goto shutdown;
     }
 
@@ -79,3 +78,4 @@ shutdown:
     ALOGE("Power Service is shutting down");
     return 1;
 }
+

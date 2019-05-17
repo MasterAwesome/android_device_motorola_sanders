@@ -306,7 +306,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
+    android.hardware.power@1.2-service
 
 # Qualcomm
 PRODUCT_COPY_FILES += \
@@ -331,7 +331,7 @@ PRODUCT_COPY_FILES += \
 
 # Powerhint configuration file
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/configs/powerhint.xml:system/etc/powerhint.xml \
+     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml \
      $(LOCAL_PATH)/configs/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml
 
 # Releasetools script

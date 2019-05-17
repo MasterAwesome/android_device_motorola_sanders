@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013,2015-2017, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2012-2013,2015-2018, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -39,10 +39,9 @@
 #include "list.h"
 #include "hint-data.h"
 #include "power-common.h"
-#include "power-helper.h"
 
-#define LOG_TAG "QCOM PowerHAL"
-#include <log/log.h>
+#define LOG_TAG "QTI PowerHAL"
+#include <utils/Log.h>
 
 char scaling_gov_path[4][80] ={
     "sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
@@ -210,15 +209,12 @@ int is_interactive_governor(char* governor) {
    return 0;
 }
 
-#ifndef INTERACTION_BOOST
-void interaction(int UNUSED(duration), int UNUSED(num_args), int UNUSED(opt_list[]))
-{
-#else
 void interaction(int duration, int num_args, int opt_list[])
 {
+#ifdef INTERACTION_BOOST
     static int lock_handle = 0;
 
-    if (duration < 0 || num_args < 1 || opt_list[0] == 0)
+    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
         return;
 
     if (qcopt_handle) {
@@ -233,7 +229,7 @@ void interaction(int duration, int num_args, int opt_list[])
 
 int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[])
 {
-    if (duration < 0 || num_args < 1 || opt_list[0] == 0)
+    if (duration < 0 || num_args < 1 || opt_list[0] == NULL)
         return 0;
 
     if (qcopt_handle) {
@@ -259,7 +255,7 @@ int perf_hint_enable(int hint_id , int duration)
         if (perf_hint) {
             lock_handle = perf_hint(hint_id, NULL, duration, -1);
             if (lock_handle == -1)
-                ALOGE("Failed to acquire lock.");
+                ALOGE("Failed to acquire lock for hint_id: %X.", hint_id);
         }
     }
     return lock_handle;
