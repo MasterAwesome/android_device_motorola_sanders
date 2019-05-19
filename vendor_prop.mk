@@ -188,6 +188,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.smoothstreaming=false \
     mmp.enable.3g2=true
 
+# UI
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.use_fifo_ui=1
+
 # Netmgr
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.use_data_netmgrd=true \
