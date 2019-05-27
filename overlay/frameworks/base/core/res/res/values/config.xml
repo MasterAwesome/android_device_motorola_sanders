@@ -504,4 +504,8 @@
 
     <!-- Whether to enable Qualcomm Boost Framework -->
     <bool name="config_enableQcCpuBoost">true</bool>
+
+    <!-- Whether the device supports Smart Pixels -->
+    <bool name="config_enableSmartPixels">true</bool>
+
 </resources>
