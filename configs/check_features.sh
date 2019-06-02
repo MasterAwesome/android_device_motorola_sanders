@@ -13,3 +13,22 @@ else
     # Only XT1806 variant got a compass
     rm /vendor/etc/permissions/android.hardware.sensor.compass.xml
 fi
+
+if ! [ "$sku" = "XT1802" ]; then
+    # Others variants doesn't have DTV support
+    rm /vendor/etc/permissions/com.motorola.hardware.dtv.xml
+    rm /vendor/etc/permissions/mot_dtv_permissions.xml
+    rm /vendor/lib/libdtvtuner.so
+    rm /vendor/lib64/libdtvtuner.so
+    rm /vendor/lib/libdtvhal.so
+    rm /vendor/lib64/libdtvhal.so
+    rm -r /vendor/app/DTVPlayer
+    rm -r /vendor/app/DTVService
+fi
+
+if [ "$sku" = "XT1804" ]; then
+    # XT1804 has additional thermal configs
+    mv /vendor/etc/thermal-engine-INDIA.conf /vendor/etc/thermal-engine.conf
+else
+    rm /vendor/etc/thermal-engine-INDIA.conf
+fi
