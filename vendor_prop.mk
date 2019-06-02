@@ -339,6 +339,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.trim_enable_memory=2147483648
 
+# Touch response
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.qti.inputopts.enable=true \
+    persist.vendor.qti.inputopts.movetouchslop=0.6
+
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.usb.mtp=0x2e82 \
