@@ -1055,6 +1055,9 @@ on property:ro.boot.ram=4GB
     #CPE fw_name used by sound trigger HAL
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
+   # Remove settings cache, avoids derps after dirty flash
+    rm -rf /data/system/package_cache
+
 on property:sys.boot_completed=1
     setprop vendor.post_boot.parsed 1
 
