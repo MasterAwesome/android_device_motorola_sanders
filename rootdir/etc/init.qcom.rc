@@ -1035,7 +1035,7 @@ on property:ro.boot.ram=4GB
     write /sys/module/process_reclaim/parameters/swap_opt_eff 30
     write /sys/module/process_reclaim/parameters/pressure_min 50
     write /sys/module/process_reclaim/parameters/per_swap_size 512
-    write /sys/module/lowmemorykiller/parameters/minfree "15360,19200,23040,26880,34415,43737"
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
 
     #Reset the "read ahead" setting for system patition
     # result: ext4: 32KB, dm_verity:64KB, block layer: 128KB
