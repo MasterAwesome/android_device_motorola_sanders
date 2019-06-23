@@ -47,6 +47,11 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_USES_64_BIT_BINDER := true
 
+# Enable dexpreopt to speed boot time
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+WITH_DEXPREOPT := true
+PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
+
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := sanders,sanders_retail
 
