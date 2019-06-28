@@ -15,11 +15,15 @@
 # limitations under the License.
 
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, device/motorola/sanders/full_sanders.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk)
 
-# Inherit some common SacredOS stuff.
-$(call inherit-product, vendor/sacred/common.mk)
+# Inherit from sanders device
+$(call inherit-product, device/motorola/sanders/device.mk)
+
+# Inherit some cmmon arrow stuff.
+$(call inherit-product, vendor/arrow/config/common.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -27,7 +31,7 @@ TARGET_SCREEN_HEIGHT := 1920
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := sanders
-PRODUCT_NAME := sacred_sanders
+PRODUCT_NAME := arrow_sanders
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
 
@@ -41,3 +45,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT := google/crosshatch/crosshatch:9/PQ1A.190105.004/5148680:user/release-keys
 VENDOR_BUILD_FINGERPRINT := google/crosshatch/crosshatch:9/PQ1A.190105.004/5148680:user/release-keys
 
+# for specific
+$(call inherit-product, vendor/motorola/sanders/sanders-vendor.mk)
