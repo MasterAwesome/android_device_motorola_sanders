@@ -44,6 +44,7 @@ bluetooth.hfp.client=1
 qcom.bt.le_dev_pwr_class=1
 ro.cutoff_voltage_mv=3400
 ro.bluetooth.hfp.ver=1.7
+ro.qualcomm.bt.hci_transport=smd
 vendor.qcom.bluetooth.soc=pronto
 ro.qualcomm.bluetooth.opp=true
 ro.qualcomm.bluetooth.hfp=true
@@ -57,6 +58,7 @@ ro.qualcomm.bluetooth.map=true
 persist.bt.enableAptXHD=true
 
 # Camera
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk
 camera.disable_zsl_mode=1
 persist.vendor.camera.display.umax=1920x1080
 persist.vendor.camera.display.lmax=1280x720
@@ -76,7 +78,9 @@ persist.camera.time.monotonic=1
 persist.camera.eis.enable=1
 vidc.dec.disable.split.cpu=1
 video.disable.ubwc=1
-vendor.camera.aux.packagelist=com.motorola.camera2,com.google.android.Pixel2Mod
+camera.aux.packagelist=org.codeaurora.snapcam,com.motorola.camera2,com.motorola.motocit
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.motorola.camera2,com.motorola.motocit
+vendor.vidc.enc.disable.pq=true
 
 # CNE
 persist.cne.feature=1
@@ -99,8 +103,8 @@ dalvik.vm.heaptargetutilization=0.75
 
 # Display
 debug.sf.enable_hwc_vds=1
-debug.egl.hw=0
-debug.sf.hw=0
+debug.egl.hw=1
+debug.sf.hw=1
 debug.sf.latch_unsignaled=1
 persist.hwc.mdpcomp.enable=true
 dev.pm.dyn_samplingrate=1
@@ -114,9 +118,16 @@ persist.camera.video.ubwc=0
 persist.hwc.enable_vds=1
 debug.sf.recomputecrop=0
 debug.enable.sglscale=1
-vendor.display.enable_default_color_mode=1
+
+#Disable Skip Validate
+sdm.debug.disable_skip_validate=1
+
+# Display Properties as per treble compliance
 vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_skip_validate=1
+
+# Property to enable display default color mode
+vendor.display.enable_default_color_mode=1
 
 # FM
 ro.fm.transmitter=false
@@ -149,7 +160,6 @@ persist.ims.vt=false
 persist.ims.vt.epdg=false
 persist.mm.sta.enable=0
 persist.vt.supported=0
-persist.volte_enabled_by_hw=1
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
@@ -271,6 +281,10 @@ ro.vendor.sensors.glance_approach=false
 ro.hardware.sensors=sanders
 
 #Trim properties
+ro.vendor.qti.sys.fw.use_trim_settings=true
+ro.vendor.qti.sys.fw.empty_app_percent=50
+ro.vendor.qti.sys.fw.trim_empty_percent=100
+ro.vendor.qti.sys.fw.trim_cache_percent=100
 ro.vendor.qti.sys.fw.trim_enable_memory=2147483648
 
 # USB

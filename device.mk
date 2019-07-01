@@ -133,9 +133,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf \
     $(LOCAL_PATH)/gps/etc/cacert_location.pem:system/vendor/etc/cacert_location.pem
 
-# MotoActions
-PRODUCT_PACKAGES += \
-    MotoActions
 
 # Display
 PRODUCT_PACKAGES += \
@@ -250,18 +247,11 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_codecs.xml:/system/vendor/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/media_codecs_8953.xml:/system/vendor/etc/media_codecs_8953.xml \
-    $(LOCAL_PATH)/configs/media_codecs_8953_v1.xml:/system/vendor/etc/media_codecs_8953_v1.xml \
-    $(LOCAL_PATH)/configs/media_codecs_performance.xml:/system/vendor/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/configs/media_codecs_performance_8953.xml:/system/vendor/etc/media_codecs_performance_8953.xml \
-    $(LOCAL_PATH)/configs/media_codecs_performance_8953_v1.xml:/system/vendor/etc/media_codecs_performance_8953_v1.xml \
-    $(LOCAL_PATH)/configs/media_codecs_vendor.xml:/system/vendor/etc/media_codecs_vendor.xml \
-    $(LOCAL_PATH)/configs/media_codecs_vendor_audio.xml:/system/vendor/etc/media_codecs_vendor_audio.xml \
-    $(LOCAL_PATH)/configs/media_profiles.xml:/system/vendor/etc/media_profiles.xml \
-    $(LOCAL_PATH)/configs/media_profiles_8953_v1.xml:/system/vendor/etc/media_profiles_8953_v1.xml \
-    $(LOCAL_PATH)/configs/media_profiles_V1_0.xml:/system/vendor/etc/media_profiles_V1_0.xml \
-$(LOCAL_PATH)/configs/media_profiles_vendor.xml:/system/vendor/etc/media_profiles_vendor.xml
+    $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
+    $(LOCAL_PATH)/configs/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml \
+    $(LOCAL_PATH)/configs/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/vendor/etc/media_codecs_google_audio.xml \
@@ -360,8 +350,7 @@ PRODUCT_PACKAGES += \
     qti-telephony-common
 
 PRODUCT_BOOT_JARS += \
-    telephony-ext \
-    QPerformance
+    telephony-ext
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -395,7 +384,6 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
-    libcld80211 \
     hostapd \
     libqsap_sdk \
     libwpa_client \
