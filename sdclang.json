@@ -1,0 +1,9 @@
+{
+    "default": {
+        "SDCLANG": true,
+        "SDCLANG_PATH": "vendor/qcom/sdclang/6.0/prebuilt/linux-x86_64/bin",
+        "SDCLANG_PATH_2": "vendor/qcom/sdclang/6.0/prebuilt/linux-x86_64/bin",
+        "SDCLANG_FLAGS": "-Wno-vectorizer-no-neon",
+        "SDCLANG_FLAGS_2": "-Wno-vectorizer-no-neon"
+    }
+}
