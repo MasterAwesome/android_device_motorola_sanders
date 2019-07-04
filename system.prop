@@ -58,6 +58,7 @@ ro.qualcomm.bluetooth.map=true
 persist.bt.enableAptXHD=true
 
 # Camera
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk
 camera.disable_zsl_mode=1
 persist.vendor.camera.display.umax=1920x1080
 persist.vendor.camera.display.lmax=1280x720
@@ -77,7 +78,8 @@ persist.camera.time.monotonic=1
 persist.camera.eis.enable=1
 vidc.dec.disable.split.cpu=1
 video.disable.ubwc=1
-vendor.camera.aux.packagelist=com.motorola.camera2,com.google.android.Pixel2Mod
+camera.aux.packagelist=org.codeaurora.snapcam,com.motorola.camera2,com.motorola.motocit
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.motorola.camera2,com.motorola.motocit
 vendor.vidc.enc.disable.pq=true
 
 # CNE
