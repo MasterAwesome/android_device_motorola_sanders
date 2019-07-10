@@ -404,3 +404,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Disable touch heatmap
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.input.video_enabled=false
+
+# Boot
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.vendor.shutdown.waittime=500
