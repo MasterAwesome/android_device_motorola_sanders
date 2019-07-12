@@ -54,6 +54,8 @@ s32 wifi_qsap_start_softap_in_concurrency(void);
 s32 wifi_qsap_stop_softap_in_concurrency(void);
 #endif
 
+s32 wifi_qsap_set_tx_power(s32);
+
 #if __cplusplus
 };  // extern "C"
 #endif
