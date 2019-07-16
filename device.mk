@@ -212,8 +212,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libgnss \
     libgnsspps \
-    android.hardware.gnss@1.1-impl-qti \
-    android.hardware.gnss@1.1-service-qti \
+    android.hardware.gnss@1.0-impl-qti \
     libqsap_sdk \
     libqsap_shim
 
