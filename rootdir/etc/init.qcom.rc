@@ -955,6 +955,9 @@ on property:sys.boot_completed=1
     #CPE fw_name used by sound trigger HAL
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
+   # Remove settings cache, avoids derps after dirty flash
+    rm -rf /data/system/package_cache
+
     # Set idle GPU to 133 Mhz
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
 
