@@ -47,11 +47,6 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_USES_64_BIT_BINDER := true
 
-# Enable dexpreopt to speed boot time
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
-WITH_DEXPREOPT := true
-PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
-
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := sanders,sanders_retail
 
@@ -134,14 +129,13 @@ BOARD_NO_CHARGER_LED := true
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
 
-# Dexpreopt
-WITH_DEXPREOPT := true
+# Enable dexpreopt to speed boot time
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+WITH_DEXPREOPT := true
 PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
 
 # Display
 BOARD_USES_ADRENO := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_GRALLOC1 := true

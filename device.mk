@@ -102,7 +102,6 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     libbson \
-    Camera2 \
     libgui_vendor \
     camera.device@1.0-impl \
     camera.device@3.2-impl \
@@ -127,10 +126,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/sap.conf:system/vendor/etc/sap.conf \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf \
     $(LOCAL_PATH)/gps/etc/cacert_location.pem:system/vendor/etc/cacert_location.pem
-
-# LineageActions
-PRODUCT_PACKAGES += \
-    LineageActions
 
 #Lineage HALs
 # Trust
