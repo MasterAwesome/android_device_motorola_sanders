@@ -303,6 +303,9 @@
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">5000</integer>
 
+    <!-- Default color for notification LED is white. -->
+    <color name="config_defaultNotificationColor">#ff0000ff</color>
+
     <!-- Values for GPS configuration -->
     <string-array name="config_gpsParameters">
         <item>XTRA_SERVER_1=https://xtrapath1.izatcloud.net/xtra2.bin</item>
@@ -324,9 +327,6 @@
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveBatteryLed">true</bool>
-
-    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
 
      <!-- Does the battery LED support multiple colors?
          Used to decide if the user can change the colors -->
@@ -384,8 +384,8 @@
           turned off and the screen off animation has been performed. -->
     <bool name="config_dozeAfterScreenOffByDefault">true</bool>
 
-    <!-- Disable AOD by default -->
-    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+    <!-- Enable doze powersaving -->
+    <bool name="config_enableAutoPowerModes">true</bool>
 
     <!-- Power Management: Specifies whether to decouple the interactive state of the
          device from the display on/off state.
@@ -457,18 +457,21 @@
        config to 19. -->
     <integer name="config_deviceHardwareKeys">1</integer>
 
+    <!-- Support in Surfaceflinger for blur layers.
+         NOTE: This requires additional hardware-specific code. -->
+    <!--<bool name="config_uiBlurEnabled">true</bool>-->
+
     <!-- Default files to pin via Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/framework/arm64/boot-core-libart.oat"</item>
         <item>"/system/framework/arm64/boot-framework.oat"</item>
+        <item>"/system/framework/arm64/boot.oat"</item>
+        <item>"/system/framework/boot-core-libart.vdex"</item>
         <item>"/system/framework/boot-framework.vdex"</item>
+        <item>"/system/framework/boot.vdex"</item>
         <item>"/system/framework/oat/arm64/services.odex"</item>
         <item>"/system/framework/oat/arm64/services.vdex"</item>
-        <item>"/system/framework/arm64/boot.oat"</item>
-        <item>"/system/framework/boot.vdex"</item>
-        <item>"/system/framework/arm64/boot-core-libart.oat"</item>
-        <item>"/system/framework/boot-core-libart.vdex"</item>
-        <item>"/system/lib64/libsurfaceflinger.so"</item>
-   </string-array>
+    </string-array>
 
    <!-- Should the pinner service pin the Camera application? -->
    <bool name="config_pinnerCameraApp">true</bool>
@@ -477,8 +480,8 @@
    in hardware. -->
    <bool name="config_setColorTransformAccelerated">true</bool>
    
-    <!-- enable doze powersaving mode -->
-    <bool name="config_enableAutoPowerModes">true</bool>
+   <!-- If this is true, device supports Sustained Performance Mode. -->
+   <bool name="config_sustainedPerformanceModeSupported">true</bool>
 
     <!-- Should the pinner service pin the Home application? -->
     <bool name="config_pinnerHomeApp">true</bool>
@@ -507,5 +510,8 @@
          or a single SIM device can have 1 phones/logical modems, but 2 physical slots (one eSIM
          and one pSIM) -->
     <integer name="config_num_physical_slots">2</integer>
+
+    <!-- Show battery fully charged notification -->
+    <bool name="config_showBatteryFullyChargedNotification">true</bool>
 
 </resources>
