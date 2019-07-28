@@ -17,8 +17,8 @@
 package org.lineageos.settings.device.doze;
 
 import android.hardware.Sensor;
-import android.hardware.TriggerEvent;
-import android.hardware.TriggerEventListener;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.util.Log;
 
 import org.lineageos.settings.device.LineageActionsSettings;
@@ -48,7 +48,7 @@ public class GlanceSensor implements ScreenStateNotifier {
     public void screenTurnedOn() {
         if (mEnabled) {
             Log.d(TAG, "Disabling");
-            mSensorHelper.cancelTriggerSensor(mSensor, mGlanceListener);
+            mSensorHelper.unregisterListener(mGlanceListener);
             mEnabled = false;
         }
     }
@@ -57,17 +57,20 @@ public class GlanceSensor implements ScreenStateNotifier {
     public void screenTurnedOff() {
         if (mLineageActionsSettings.isPickUpEnabled() && !mEnabled) {
             Log.d(TAG, "Enabling");
-            mSensorHelper.requestTriggerSensor(mSensor, mGlanceListener);
+            mSensorHelper.registerListener(mSensor, mGlanceListener);
             mEnabled = true;
         }
     }
 
-    private TriggerEventListener mGlanceListener = new TriggerEventListener() {
+    private SensorEventListener mGlanceListener = new SensorEventListener() {
         @Override
-        public void onTrigger(TriggerEvent event) {
+        public void onSensorChanged(SensorEvent event) {
             Log.d(TAG, "triggered");
             mSensorAction.action();
-            mSensorHelper.requestTriggerSensor(mSensor, mGlanceListener);
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
         }
     };
 }
