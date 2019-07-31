@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/rr_sanders.mk
+	$(LOCAL_DIR)/havoc_sanders.mk

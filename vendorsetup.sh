@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo rr_sanders-userdebug
+add_lunch_combo havoc_sanders-userdebug
