@@ -7,6 +7,6 @@
   {
     "repository": "MasterAwesome/android_kernel_motorola_msm8953",
     "target_path": "kernel/motorola/msm8953",
-    "revision": "MMI-OPS28.65-36"
+    "revision": "lineage-16.0"
   }
 ]
