@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/lineage_sanders.mk
+	$(LOCAL_DIR)/validus_sanders.mk

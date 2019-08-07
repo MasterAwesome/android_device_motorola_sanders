@@ -284,9 +284,6 @@ on boot
     # Create vpp directory
     mkdir /persist/vpp 0770 media media
 
-    # default country code
-    setprop ro.boot.wificountrycode 00
-
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /tombstones/modem 0771 system system
@@ -344,7 +341,7 @@ on post-fs-data
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
-    mkdir /data/vendor/wifi 0771 wifi wifi
+    mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/vendor/wifi/sockets 0770 wifi wifi
     mkdir /data/vendor/wifi/hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/hostapd/ctrl 0770 wifi wifi

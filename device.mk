@@ -17,9 +17,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -102,7 +100,6 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     libbson \
-    Camera2 \
     libgui_vendor \
     camera.device@1.0-impl \
     camera.device@3.2-impl \
@@ -127,19 +124,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/sap.conf:system/vendor/etc/sap.conf \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf \
     $(LOCAL_PATH)/gps/etc/cacert_location.pem:system/vendor/etc/cacert_location.pem
-
-# LineageActions
-PRODUCT_PACKAGES += \
-    LineageActions
-
-#Lineage HALs
-# Trust
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
-# LiveDisplay native
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Display
 PRODUCT_PACKAGES += \
@@ -246,7 +230,8 @@ PRODUCT_COPY_FILES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service.sanders
+    android.hardware.light@2.0-service \
+    lights.msm8953
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -308,7 +293,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
+    android.hardware.power@1.2-service
 
 # Powerhint configuration file
 PRODUCT_COPY_FILES += \
@@ -401,7 +386,6 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
-    android.hardware.wifi.supplicant@1.0 \
     hostapd \
     libqsap_sdk \
     libwpa_client \
