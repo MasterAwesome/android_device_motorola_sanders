@@ -200,7 +200,7 @@
     <bool name="config_useDevInputEventForAudioJack">true</bool>
 
     <!-- Values for GPS configuration -->
-    <string-array name="config_gpsParameters">
+    <!--string-array name="config_gpsParameters">
         <item>XTRA_SERVER_1=https://xtrapath1.izatcloud.net/xtra2.bin</item>
         <item>XTRA_SERVER_2=https://xtrapath2.izatcloud.net/xtra2.bin</item>
         <item>XTRA_SERVER_3=https://xtrapath3.izatcloud.net/xtra2.bin</item>
@@ -216,7 +216,7 @@
         <item>INTERMEDIATE_POS=0</item>
         <item>SUPL_ES=1</item>
         <item>GPS_LOCK=1</item>
-    </string-array>
+    </string-array -->
 
     <!-- Enable overlay for all location components. -->
     <bool name="config_enableNetworkLocationOverlay" translatable="false">false</bool>
