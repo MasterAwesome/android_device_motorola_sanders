@@ -1,3 +1,10 @@
+/dev/block/platform/soc/7824900.sdhci/mmcblk0p19         u:object_r:modem_efs_partition_device:s0
+/dev/block/platform/soc/7824900.sdhci/mmcblk0p27         u:object_r:modem_efs_partition_device:s0
+/dev/block/platform/soc/7824900.sdhci/mmcblk0p28         u:object_r:modem_efs_partition_device:s0
+
+# FSG
+/fsg                                                     u:object_r:fsg_file:s0
+
 # ADSP
 /sys/kernel/aov(/.*)?                                    u:object_r:sysfs_adsp:s0
 /data/adspd(/.*)?                                        u:object_r:adspd_data_file:s0
