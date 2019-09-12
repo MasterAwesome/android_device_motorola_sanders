@@ -16,3 +16,5 @@
 PRODUCT_MAKEFILES := \
 	$(LOCAL_DIR)/arrow_sanders.mk
 
+COMMON_LUNCH_CHOICES := \
+	arrow_sanders-userdebug
