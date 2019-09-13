@@ -1,6 +1,6 @@
-get_prop(hal_gnss_qti, diag_prop);
-allow hal_gnss_qti debug_prop:file read;
-allow hal_gnss_qti property_socket:sock_file write;
+#get_prop(hal_gnss_qti, diag_prop);
+#allow hal_gnss_qti debug_prop:file read;
+#allow hal_gnss_qti property_socket:sock_file write;
 
 # Most HALs are not allowed to use network sockets. Qcom library
 # libqdi is used across multiple processes which are clients of
@@ -14,4 +14,4 @@ allow hal_gnss_qti property_socket:sock_file write;
 # libqdi and have all its clients use netlink route
 # sockets.
 # Taken from device/google/wahoo
-dontaudit hal_gnss_qti self:udp_socket create;
+#dontaudit hal_gnss_qti self:udp_socket create;

@@ -16,13 +16,13 @@ r_dir_file(perfd, sysfs_type)
 # they are created with the default label "sysfs". For robustness,
 # allow perfd to write to "sysfs" to ensure it can optimally
 # tune the power/cpu settings.
-allow perfd sysfs:file write;
-allow perfd sysfs_msm_perf:file write;
-allow perfd sysfs_ssr:file write;
+#allow perfd sysfs:file write;
+#allow perfd sysfs_msm_perf:file write;
+#allow perfd sysfs_ssr:file write;
 allow perfd sysfs_devices_system_cpu:file write;
-allow perfd sysfs_power_management:file write;
-allow perfd sysfs_devfreq:file write;
-allow perfd sysfs_lib:file write;
+#allow perfd sysfs_power_management:file write;
+#allow perfd sysfs_devfreq:file write;
+#allow perfd sysfs_lib:file write;
 
 allow perfd proc_kernel_sched:file w_file_perms;
 allow perfd gpu_device:chr_file rw_file_perms;
@@ -35,4 +35,4 @@ dontaudit perfd self:capability kill;
 allow perfd surfaceflinger:process signull;
 allow perfd hal_graphics_composer_default:process signull;
 
-get_prop(perfd, freq_prop);
+#get_prop(perfd, freq_prop);

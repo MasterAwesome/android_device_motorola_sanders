@@ -1,6 +1,6 @@
 get_prop(surfaceflinger, diag_prop);
-allow surfaceflinger perfd_data_file:sock_file write;
-allow surfaceflinger diag_device:chr_file { read write };
+#allow surfaceflinger perfd_data_file:sock_file write;
+#allow surfaceflinger diag_device:chr_file { read write };
 
 binder_call(surfaceflinger, hwservicemanager)
 

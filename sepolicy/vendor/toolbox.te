@@ -4,4 +4,4 @@ set_prop(toolbox, touch_prop);
 allow toolbox init:fifo_file { write getattr read ioctl };
 
 allow toolbox radio_data_file:file rw_file_perms;
-allow toolbox firmware_file:file getattr;
+#allow toolbox firmware_file:file getattr;
