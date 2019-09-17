@@ -925,7 +925,7 @@ on property:sys.boot_completed=1
 
     # Enable ZRAM on boot_complete
     swapon_all /system/vendor/etc/fstab.qcom
-    swapon /dev/block/zram0 -p 32758
+    # swapon /dev/block/zram0 -p 32758
 
 on property:ro.boot.ram=2GB
     write /sys/block/zram0/disksize 536870912
@@ -1066,7 +1066,7 @@ on property:ro.boot.ram=4GB
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
    # Remove settings cache, avoids derps after dirty flash
-    rm -rf /data/system/package_cache
+   # rm -rf /data/system/package_cache
 
 on property:sys.boot_completed=1
     setprop vendor.post_boot.parsed 1
