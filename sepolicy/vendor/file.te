@@ -31,6 +31,9 @@ type wapi_supplicant_data_file, file_type, data_file_type, core_data_file_type;
 # RIL
 type netmgr_data_file, file_type, data_file_type, core_data_file_type;
 
+#test firmware
+type firmware_file, file_type;
+
 # sysfs
 #type sysfs_adsp, fs_type, sysfs_type;
 type sysfs_homebutton, fs_type, sysfs_type, mlstrustedobject;

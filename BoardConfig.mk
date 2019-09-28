@@ -279,3 +279,5 @@ WPA_SUPPLICANT_VERSION           := VER_0_8_X
 # Security patch level
 VENDOR_SECURITY_PATCH := 2019-04-01
 
+BOARD_ROOT_EXTRA_SYMLINKS := \
+	/vendor/firmware_mnt/image:firmware/image

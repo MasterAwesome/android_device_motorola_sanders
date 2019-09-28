@@ -139,3 +139,6 @@
 
 #avb
 /avb(/.*)?               u:object_r:avb_file:s0
+
+# files in firmware
+/firmware(/.*)?         u:object_r:firmware_file:s0
