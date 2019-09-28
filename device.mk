@@ -149,7 +149,7 @@ PRODUCT_PACKAGES += android.hardware.media.omx
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service.widevine
+    android.hardware.drm@1.2-service.widevine
 
 # limit dex2oat threads to improve thermals
 PRODUCT_PROPERTY_OVERRIDES += \
