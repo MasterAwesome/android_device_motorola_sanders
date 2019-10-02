@@ -108,6 +108,7 @@ PRODUCT_PACKAGES += \
     libbson \
     Snap2 \
     libgui_vendor \
+    camera_msm8953_shim \
     camera.device@1.0-impl \
     camera.device@3.2-impl \
     android.hardware.camera.provider@2.4-impl \
