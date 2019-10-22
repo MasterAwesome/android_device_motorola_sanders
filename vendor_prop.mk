@@ -256,6 +256,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.dpm.feature=0 \
     persist.vendor.radio.force_get_pref=1 \
     persist.radio.msgtunnel.start=true \
+    persist.sys.fflag.override.settings_network_and_internet_v2=true \
     persist.vendor.radio.no_wait_for_card=1 \
     persist.vendor.radio.oem_ind_to_both=0 \
     persist.vendor.radio.relay_oprt_change=1 \
