@@ -351,6 +351,7 @@ PRODUCT_PACKAGES += \
     init.mmi.usb.rc \
     init.qcom.rc \
     init.qcom.sensors.sh \
+    init.safailnet.rc \
     init.sanders.rc \
     init.spectrum.rc \
     init.spectrum.sh
