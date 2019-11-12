@@ -398,6 +398,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.dha_th_rate=2.3 \
     ro.config.sdha_apps_bg_max=64 \
     ro.config.sdha_apps_bg_min=8
+    drm.service.enabled=true \
+    media.stagefright.thumbnail.prefer_hw_codecs=true
 
 # Disable touch heatmap
 PRODUCT_PROPERTY_OVERRIDES += \
