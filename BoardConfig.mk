@@ -277,7 +277,7 @@ WIFI_DRIVER_FW_PATH_P2P          := "p2p"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-04-01
+VENDOR_SECURITY_PATCH := 2019-08-01
 
 BOARD_ROOT_EXTRA_SYMLINKS := \
 	/vendor/firmware_mnt/image:firmware/image
