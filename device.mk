@@ -108,8 +108,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     libbson \
-    Snap2 \
-    Camera2 \
+    Snap \
     libgui_vendor \
     camera_msm8953_shim \
     camera.device@1.0-impl \
