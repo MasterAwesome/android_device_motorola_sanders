@@ -46,4 +46,21 @@
         <permission name="android.permission.READ_EXTERNAL_STORAGE" />
         <permission name="android.permission.WRITE_EXTERNAL_STORAGE" />
     </privapp-permissions>
+
+    <privapp-permissions package="com.google.android.projection.gearhead">
+        <permission name="android.permission.READ_PHONE_STATE"/>
+        <permission name="android.permission.CALL_PHONE"/>
+        <permission name="android.permission.READ_CALL_LOG"/>
+        <permission name="android.permission.READ_CONTACTS"/>
+        <permission name="android.permission.ACCESS_FINE_LOCATION"/>
+        <permission name="android.permission.RECEIVE_SMS"/>
+        <permission name="android.permission.SEND_SMS"/>
+        <permission name="android.permission.RECORD_AUDIO"/>
+        <permission name="android.permission.READ_CALENDAR"/>
+        <permission name="android.permission.PROCESS_OUTGOING_CALLS"/>
+        <permission name="android.permission.READ_SMS"/>
+        <permission name="android.permission.RECEIVE_MMS"/>
+        <permission name="android.permission.WRITE_CALL_LOG"/>
+        <permission name="android.permission.ACCESS_COARSE_LOCATION"/>
+    </privapp-permissions>
 </permissions>
