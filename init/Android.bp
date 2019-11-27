@@ -1,0 +1,15 @@
+
+
+cc_library_static {
+    name: "libinit_sanders",
+    recovery_available: true,
+
+    include_dirs: ["system/core/init"],
+    cppflags: [
+        "-Wall",
+        "-DANDROID_TARGET=msm8953",
+    ],
+    srcs: ["init_sanders.cpp"],
+    whole_static_libs: ["libbase"],
+
+}
