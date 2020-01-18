@@ -79,6 +79,9 @@
                 android:name="com.android.settings.category"
                 android:value="com.android.settings.category.ia.homepage" />
             <meta-data
+                android:name="com.android.settings.bg.hint"
+                android:resource="@color/homepage_moto_background" /> 
+	    <meta-data
                 android:name="com.android.settings.icon"
                 android:resource="@drawable/ic_settings_gestures_dashboard" />
             <meta-data
