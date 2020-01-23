@@ -117,6 +117,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heaptargetutilization=0.6 \
     ro.dalvik.vm.native.bridge=0
 
+# Disable rotator split feature
+PRODUCT_PROPERTY_OVERRIDES += \
+    sdm.debug.disable_rotator_split=1
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_hwc_vds=1 \
