@@ -328,8 +328,7 @@ PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/perf/targetconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/targetconfig.xml \
      $(LOCAL_PATH)/configs/perf/targetresourceconfigs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/targetresourceconfigs.xml
 
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
+PRODUCT_ENFORCE_RRO_TARGETS :=*
 
 # Perf configs
 PRODUCT_COPY_FILES += \
