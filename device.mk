@@ -364,6 +364,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_ODM_PROPERTIES += \
     ro.vendor.qti.va_odm.support=1
 
+PRODUCT_PACKAGES += \
+    libqti_vndfwk_detect
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.qcom.fm.sh \
