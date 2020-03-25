@@ -628,6 +628,10 @@
          will not debounce light sensor readings -->
     <integer name="config_lightSensorWarmupTime">200</integer>
 
+    <!-- Whether to artificially interpret all signal strengths as
+         one bar higher than they actually are -->
+    <bool name="config_inflateSignalStrength">true</bool>
+
     <!-- The list of components which should be automatically disabled for a specific device. -->
     <string-array name="config_deviceDisabledComponents" translatable="false">
         <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
