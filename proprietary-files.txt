@@ -2,7 +2,6 @@
 
 -app/datastatusnotification/datastatusnotification.apk
 -app/embms/embms.apk
--app/TimeService/TimeService.apk
 bin/adspd
 bin/adsprpcd
 bin/btnvtool
@@ -28,7 +27,6 @@ bin/rild
 bin/rmt_storage
 bin/ssr_setup
 bin/tftp_server
-bin/time_daemon
 etc/acdbdata/Bluetooth_cal.acdb
 etc/acdbdata/General_cal.acdb
 etc/acdbdata/Global_cal.acdb
@@ -167,7 +165,6 @@ vendor/bin/perfd
 vendor/bin/qseeproxydaemon
 vendor/bin/qseeproxysampledaemon
 vendor/bin/qti
-vendor/bin/thermal-engine
 vendor/firmware/libpn548ad_fw.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
@@ -644,7 +641,6 @@ vendor/lib/libqdi.so
 vendor/lib/libqdp.so
 vendor/lib/libqisl.so
 vendor/lib/libqmi.so
-vendor/lib/libqmi_cci.so
 vendor/lib/libqmi_client_helper.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
@@ -730,9 +726,6 @@ vendor/lib/libStDrvInt.so
 vendor/lib/libsubsystem_control.so
 vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsystem_health_mon.so
-vendor/lib/libthermalclient.so
-vendor/lib/libthermalioctl.so
--vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
 vendor/lib/libtrueportrait.so
 vendor/lib/libts_detected_face_hal.so
@@ -805,3 +798,23 @@ vendor/lib/soundfx/libdirac.so|f63826a905b520fa524e4c1b147be7cf65240953
 vendor/lib/libDiracAPI_SHARED.so|42b49679d38eca93fead05ea06ddbdc8108fd4b1
 vendor/etc/diracmobile.config|d781cd6798a7481a8f7128d144abfb2b8794212d
 
+# QMI - from LA.UM.8.6.r1-02600-89xx.0
+vendor/lib/libqmi_cci.so|df2e1f83ef1243efd3b15f98351f1407d32d5956
+vendor/lib64/libqmi_cci.so|9e066cc4ceb721413db7e9a322836de981e92c74
+
+# FM - from LA.UM.8.6.r1-02600-89xx.0
+vendor/bin/fm_qsoc_patches|b288ea0c03e651d6f47c6fe833606f22dd656367
+vendor/bin/init.qti.fm.sh|0ac820dd85ebdf5fa73b5e971f6787ff35ceb65d
+vendor/etc/init/init.qti.fm.rc|4f5459058debbea76991e69f8522126f6655fd3b
+
+# Time service - from LA.UM.8.6.r1-01900-89xx.0
+vendor/app/TimeService/TimeService.apk|4a37afd1395758d946580af184a738e3c657b1e2
+vendor/bin/time_daemon|fa1b87481313fc039d969c1ac7c06c77422ff38e
+vendor/lib/libtime_genoff.so|a574d287e7e73649685b702f4fe497eb7c6ba727
+vendor/lib64/libtime_genoff.so|06df52867790cdbbcc674a3a28d7ad7c8cc161ac
+
+# Thermal - from LA.UM.8.6.r1-02600-89xx.0
+vendor/bin/thermal-engine|37ef9d9d7180d1508096668047e7fd98b8a25b39
+vendor/lib/libthermalclient.so|5366dedac700727f05ed1729bf00c855d0777de4
+vendor/lib64/libthermalclient.so|fead3fb780b175ef478c7ab120639dea5b37a802
+vendor/lib64/libthermalioctl.so|1d6587245c7e7148638f14254e2f61f6b5552857
