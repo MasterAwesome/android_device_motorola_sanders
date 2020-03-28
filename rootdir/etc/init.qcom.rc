@@ -653,12 +653,6 @@ service vendor.rmt_storage /vendor/bin/rmt_storage
     shutdown critical
     writepid /dev/cpuset/system-background/tasks
 
-on property:wc_transport.start_fmhci=true
-    start fmhal_service
-
-on property:wc_transport.start_fmhci=false
-    stop fmhal_service
-
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
@@ -675,13 +669,6 @@ service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth diag oem_2950
-    disabled
-
-#net_admin capability needed to write rfkill sysfs entry
-service fmhal_service /vendor/bin/fmhal_service
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin net_admin
     disabled
 
 service vendor.tftp_server /vendor/bin/tftp_server
@@ -863,12 +850,6 @@ service fm_dl /vendor/bin/init.qti.fm.sh
     group system
     disabled
     oneshot
-
-on property:vendor.hw.fm.init=0
-    write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
-
-on property:vendor.hw.fm.init=1
-    write /sys/module/radio_iris_transport/parameters/fmsmd_set 1
 
 on property:crypto.driver.load=1
      insmod /vendor/lib/modules/qce.ko
