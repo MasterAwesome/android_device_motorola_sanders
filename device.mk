@@ -225,21 +225,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/uinput-fpc.idc
 
-# IMS & Telephony
-PRODUCT_PACKAGES += \
-    ims-ext-common \
-    telephony-ext \
-    ims-ext-common_system \
-    ims_ext_common.xml \
-    qti-telephony-hidl-wrapper \
-    qti_telephony_hidl_wrapper.xml
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
-
 # IMS
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
+    ims-ext-common \
+    ims_ext_common.xml \
     PresencePolling \
     RcsService
 
@@ -405,10 +395,21 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    android.hardware.radio@1.2 \
+    android.hardware.radio@1.4 \
+    android.hardware.radio.config@1.0 \
+    android.hardware.secure_element@1.0 \
     librmnetctl \
-    libprotobuf-cpp-full \
-    libprotobuf-cpp-lite \
-    libxml2
+    libcnefeatureconfig \
+    libxml2 \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 #RIL
 PRODUCT_PACKAGES += \
