@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="keyguard_plugged_in_charging_fast"><xliff:g id="percentage">%s</xliff:g> • Turbo Charging</string>
+</resources>
