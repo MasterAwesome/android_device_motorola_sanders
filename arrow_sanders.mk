@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,16 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
+# Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk)
 
+# Inherit some common ArrowOS stuff.
+$(call inherit-product, vendor/arrow/config/common.mk)
+
 # Inherit from sanders device
 $(call inherit-product, device/motorola/sanders/device.mk)
-
-# Inherit some cmmon arrow stuff.
-$(call inherit-product, vendor/arrow/config/common.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -35,9 +35,9 @@ PRODUCT_DEVICE := sanders
 PRODUCT_NAME := arrow_sanders
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
+PRODUCT_MODEL := Moto G (5S) Plus
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.model
-PRODUCT_MODEL := Moto G (5S) Plus
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="Moto G (5S) Plus" \
