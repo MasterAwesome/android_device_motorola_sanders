@@ -35,6 +35,9 @@
 # Modem
 /persist/mdm(/.*)?                                       u:object_r:persist_modem_file:s0
 
+# Persist
+/persist(/.*)?  u:object_r:mnt_vendor_file:s0
+
 /persist/prop(/.*)?                                      u:object_r:persist_omadm_file:s0
 #/persist/prov(/.*)?                                      u:object_r:persist_drm_file:s0
 /persist/omadm(/.*)?                                     u:object_r:persist_omadm_file:s0
