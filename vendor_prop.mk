@@ -215,7 +215,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.cne.feature=1 \
     persist.radio.add_power_save=1
 
-
 # NITZ
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_plmn="" \
@@ -244,6 +243,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true \
     debug.qc.hardware=true \
     persist.timed.enable=true
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.va_aosp.support=1
+
+PRODUCT_ODM_PROPERTIES += \
+    ro.vendor.qti.va_odm.support=1
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -363,33 +368,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Volte
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.radio.force_on_dc=true \
-persist.radio.custom_ecc=1 \
-persist.radio.data_con_rprt=1 \
-persist.vendor.radio.data_ltd_sys_ind=1 \
-persist.radio.data_ltd_sys_ind=1 \
-persist.vendor.radio.ignore_dom_time=10 \
-persist.radio.ignore_dom_time=10 \
-persist.radio.rat_on=combine \
-persist.radio.is_wps_enabled=true \
-persist.radio.videopause.mode=1 \
-persist.radio.sap_silent_pin=1 \
-persist.radio.always_send_plmn=true \
-persist.rcs.supported=1 \
-persist.dbg.ims_volte_enable=1 \
-persist.dbg.volte_avail_ovr=1 \
-persist.dbg.vt_avail_ovr=1 \
-persist.dbg.wfc_avail_ovr=1 \
-persist.radio.data_lte_sys_ind=1
-
-# Spectrum
-PRODUCT_PROPERTY_OVERRIDES += \
-    spectrum.support=1 \
-    persist.spectrum.kernel=MAYHEM
-
-# Create Swap disk, if below sys-prop enabled & also if device has lower (< 1 GB) RAM
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.config.swap=true
+    persist.vendor.radio.force_on_dc=true \
+    persist.radio.custom_ecc=1 \
+    persist.radio.data_con_rprt=1 \
+    persist.vendor.radio.data_ltd_sys_ind=1 \
+    persist.radio.data_ltd_sys_ind=1 \
+    persist.vendor.radio.ignore_dom_time=10 \
+    persist.radio.ignore_dom_time=10 \
+    persist.radio.rat_on=combine \
+    persist.radio.is_wps_enabled=true \
+    persist.radio.videopause.mode=1 \
+    persist.radio.sap_silent_pin=1 \
+    persist.radio.always_send_plmn=true \
+    persist.rcs.supported=1 \
+    persist.dbg.ims_volte_enable=1 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.radio.data_lte_sys_ind=1
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \

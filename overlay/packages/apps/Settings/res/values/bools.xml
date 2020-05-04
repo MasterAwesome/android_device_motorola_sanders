@@ -12,10 +12,6 @@
      limitations under the License.
 -->
 <resources>
-
-    <!-- Whether to display spectrum settings -->
-    <bool name="device_supports_spectrum">true</bool>
-
     <!-- Whether to add AGPS parameter settings -->
     <bool name="config_agps_enabled">true</bool>
 </resources>
