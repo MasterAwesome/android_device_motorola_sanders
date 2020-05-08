@@ -1,21 +1,21 @@
-# Proprietary files for sanders
+-lib/vendor.qti.hardware.fm@1.0.so
+-lib64/vendor.qti.hardware.fm@1.0.so
+-lib/libqct_resampler.so
+-vendor/lib/libtinycompress_vendor.so
+-vendor/lib64/libtinycompress_vendor.so
 -app/DTVPlayer/DTVPlayer.apk
 -app/DTVService/DTVService.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk
--framework/WfdCommon.jar
--lib/libqct_resampler.so
--lib/vendor.qti.hardware.fm@1.0.so
--lib64/vendor.qti.hardware.fm@1.0.so
--priv-app/CNEService/CNEService.apk
+-vendor/app/TimeService/TimeService.apk
+-app/embms/embms.apk
+-app/ims/ims.apk
+-app/imssettings/imssettings.apk
 -priv-app/WfdService/WfdService.apk
 -priv-app/atfwd/atfwd.apk
--product/priv-app/ims/ims.apk
--product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
--vendor/app/CACertService/CACertService.apk
--vendor/app/TimeService/TimeService.apk
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+-framework/WfdCommon.jar
 -vendor/framework/com.fingerprints.extension.jar
--vendor/lib/libtinycompress_vendor.so
--vendor/lib64/libtinycompress_vendor.so
+-vendor/app/TimeService/TimeService.apk
 bin/ipacm-diag
 bin/perfservice
 bin/ptt_socket_app
@@ -23,8 +23,6 @@ bin/radish
 bin/wfdservice
 etc/cne/SwimConfig.xml
 etc/cne/andsfCne.xml
-etc/data/dsi_config.xml
-etc/data/netmgr_config.xml
 etc/firmware/ice40.bin
 etc/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin
@@ -72,6 +70,7 @@ framework/embmslibrary.jar
 framework/imscmlibrary.jar
 framework/izat.xt.srv.jar
 framework/qcrilhook.jar
+framework/qti-telephony-common.jar
 framework/qti-vzw-ims-internal.jar
 framework/rcsimssettings.jar
 framework/tcmclient.jar
@@ -179,7 +178,6 @@ lib64/vendor.qti.hardware.iop@2.0.so
 lib64/vendor.qti.hardware.perf@1.0.so
 lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 lib64/vendor.qti.imsrtpservice@1.0.so
-product/framework/qti-telephony-common.jar
 product/lib/com.qualcomm.qti.ant@1.0.so
 product/lib/libdpmctmgr.so
 product/lib/libdpmfdmgr.so
@@ -262,6 +260,8 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile3.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
+vendor/etc/data/dsi_config.xml
+vendor/etc/data/netmgr_config.xml
 vendor/etc/diracmobile.config
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
