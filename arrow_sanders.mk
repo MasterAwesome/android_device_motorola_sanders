@@ -32,6 +32,7 @@ TARGET_BOOT_ANIMATION_RES := 1080
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := sanders
+DEVICE_MAINTAINER := Ashwatthama
 PRODUCT_NAME := arrow_sanders
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
