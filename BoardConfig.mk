@@ -264,6 +264,10 @@ PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
 
+#Vndk
+BOARD_VNDK_VERSION := current
+BOARD_VNDK_RUNTIME_DISABLE := true
+
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_WLAN_DEVICE                := qcwcn
