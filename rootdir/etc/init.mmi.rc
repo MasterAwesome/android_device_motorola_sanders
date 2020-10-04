@@ -44,8 +44,8 @@ on post-fs
     mkdir /mnt/vendor/persist/bt 0755 oem_5004 bluetooth
     mkdir /mnt/vendor/persist/wmdrm 0775 oem_5003 oem_5003
     mkdir /persist/public/usc_dm 0775 radio radio
-    mkdir /persist/sds 0700 vold vold
-    mkdir /mnt/vendor/persist/rfs/msm/mpss/mot_rfs 0771 rfs system
+    mkdir /persist/sds 0700 system system
+    mkdir /mnt/vendor/persist/rfs/msm/mpss/mot_rfs 0771 vendor_rfs system
 
     # This dir is used to store any OMA(both DM and CP) files in persist partition
     # Any app with radio UID or oem_5004 GID can read/write/execute files in this dir.
@@ -133,7 +133,7 @@ on post-fs-data
 
     # Required by FingerPrint Cards (FPC) via init so we don't need to give qseecomd or fingerprintd permissions to create them
     mkdir /data/fpc 0700 system system
-    mkdir /data/.fps 0770 system fingerp
+    mkdir /data/.fps 0770 system oem_5015
 
     #Folder for hardware properties
     mkdir /data/hardware_revisions 0755 system system
