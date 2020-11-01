@@ -90,6 +90,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.camera.aux.packagelist=com.motorola.camera2,com.google.android.Pixel2Mod \
     camera.hal1.packagelist=com.instagram.android,com.whatsapp
 
+# Charger
+ro.charger.enable_suspend=true
+
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.cne.feature=1 \
