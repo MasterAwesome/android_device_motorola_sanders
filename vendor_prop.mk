@@ -131,10 +131,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_hwc_vds=1 \
+    debug.sf.disable_hwc=0 \
     debug.egl.hw=0 \
-    debug.sf.hw=0 \
+    debug.sf.gpu_comp_tiling=1 \
+    debug.sf.hw=1 \
     debug.sf.latch_unsignaled=1 \
     debug.sf.early_phase_offset_ns=5000000 \
+    debug.performance.tuning=1 \
     persist.hwc.mdpcomp.enable=true \
     dev.pm.dyn_samplingrate=1 \
     persist.demo.hdmirotationlock=false \
