@@ -20,3 +20,19 @@ Camera  | Dual 13 MP, f/2.0, autofocus, dual-LED (dual tone) flash, 2150 x 1440 
 Copyright 2017 - The LineageOS Project.
 
 ![Moto G5S Plus](http://cdn2.gsmarena.com/vv/pics/motorola/motorola-moto-g5s-plus-1.jpg "Moto G5 Plus")
+
+### manifest.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<manifest>
+	<!-- DEVICE TREE -->
+	<project name="MasterAwesome/android_device_motorola_sanders" path="device/motorola/sanders" remote="github" />
+
+	<!-- VENDOR TREE -->
+	<project name="ArrowOS-Devices/android_vendor_motorola_sanders" path="vendor/motorola/sanders" remote="github" revision="arrow-11.0"/>
+
+	<!-- KERNEL TREE -->
+	<project name="ArrowOS-Devices/android_kernel_motorola_sanders" path="kernel/motorola/msm8953" remote="github" revision="arrow-11.0"/>
+</manifest>
+```
